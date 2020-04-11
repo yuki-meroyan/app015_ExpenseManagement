@@ -51,7 +51,7 @@
 |month|integer|null: false|
 |day|integer|null: false|
 |content|string|null: false|
-|income_spend|integer|null: false, default: 0|
+|income_spend|integer|null: false|
 |price|integer|null: false|
 |remarks|text|
 |receipt_file_name|string|
@@ -63,9 +63,11 @@
 - has_one    :receipt_file
 - belongs_to :group
 - belongs_to :user
-### Active_hash(account_no)
+### Active_hash(income_spend)
 - 0:借方
 - 1:貸方
+### Active_hash(account_no)
+- 勘定科目(項目分け)
 
 ## receipt_files
 |Column|Type|Options|
