@@ -1,24 +1,97 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users
+|Column|Type|Options|
+|------|----|-------|
+|mail|string|null: false, unique: true|
+|password|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|nick_name|string|null: false|
+### Association
+- has_many   :groups, through: group_users
+- has_many   :group_users
+- belongs_to :expense
 
-Things you may want to cover:
+## groups
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|password|string|null: false|
+|icon|string|mount_uploader: group_icon|
+### Association
+- has_one  :group_icon
+- has_many :users, through: group_users
+- has_many :group_users
+- has_many :expenses
+- has_many :tasks
 
-* Ruby version
+## group_icons
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|group_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :group
 
-* System dependencies
+## group_users
+|Column|Type|Options|
+|------|----|-------|
+|group_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :group
+- belongs_to :user
 
-* Configuration
+## expenses
+|Column|Type|Options|
+|------|----|-------|
+|order_date|date|null: false|
+|year|integer|null: false|
+|month|integer|null: false|
+|day|integer|null: false|
+|content|string|null: false|
+|income_spend|integer|null: false, default: 0|
+|price|integer|null: false|
+|remarks|text|
+|receipt_file_name|string|
+|receipt_file|string|mount_uploader: exceipt|
+|account_no|integer|null: false|
+|group_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+### Association
+- has_one    :receipt_file
+- belongs_to :group
+- belongs_to :user
+### Active_hash(account_no)
+- 0:借方
+- 1:貸方
 
-* Database creation
+## receipt_files
+|Column|Type|Options|
+|------|----|-------|
+|file|string|
+|expense_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :expense
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## tasks
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|client_user|string|null: false|
+|client_name|string|null: false|
+|detail|text|null: false|
+|request_date|date|null: false|
+|delivery_date|date|null: false|
+|status|integer|default: 1|
+|gourp_id|references|null: false, foreign_key: true|
+### Association
+- belongs_to :group
+### Active_hash(status)
+- 1:未着手
+- 2:要件整理
+- 3:作成中
+- 4:確認待
+- 5:完了
+- 9:取消・キャンセル
