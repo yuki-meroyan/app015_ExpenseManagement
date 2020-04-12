@@ -1,2 +1,30 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%header.page__header.wrapper
+  %h1
+    = link_to root_path, class: "page__link" do
+      = image_tag '', :alt => 'ロゴ'
+  %nav
+    %ul.page__main__nav
+      %li
+        = link_to root_path, class: "page__link" do
+          %h3.page__link__text
+            タスク管理
+      %li
+        = link_to root_path, class: "page__link" do
+          %h3.page__link__text
+            経費管理
+      %li
+        = link_to root_path, class: "page__link" do
+          %h3.page__link__text
+            グループ管理
+.page__contents.wrapper
+  %h2.page__title
+    Management
+    %br
+    To
+    %br
+    Remember
+  %p.page__contents__text
+  = link_to root_path, class: "page__button" do
+    ログインする
+
+
