@@ -1,13 +1,36 @@
-.row
+-# .row
+-#   .col-lg-4.col-md-6.ml-auto.mr-auto
+-#     %h2.text-center= t('.forgot_your_password')
+-#     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+-#       = devise_error_messages!
+-#       %br/
+-#       %p.text-left= t('.forgot_your_password_message')
+-#       .form-group
+-#         = f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control'
+-#       .form-group
+-#         = f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary btn-block btn-lg'
+-#     .text-center
+-#       = render "devise/shared/links"
+
+.form__contents
   .col-lg-4.col-md-6.ml-auto.mr-auto
-    %h2.text-center= t('.forgot_your_password')
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      = devise_error_messages!
-      %br/
-      %p.text-left= t('.forgot_your_password_message')
-      .form-group
-        = f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control'
-      .form-group
-        = f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary btn-block btn-lg'
-    .text-center
-      = render "devise/shared/links"
+    .form__content
+      .form__head
+        %h2.text-center
+          = t('.forgot_your_password')
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, id: "form__content") do |f|
+        .form__box
+          .form__text
+            = devise_error_messages!
+            %p.text-left
+              = t('.forgot_your_password_message')
+        .form__box
+          = f.email_field :email, autofocus: true, placeholder: 'Gmail Address'
+        .form__box
+          = f.submit t('.send_me_reset_password_instructions'), class: "form__button"
+      .form__footer
+        = link_to new_user_session_path do
+          %h2.form__text ログインへ
+      .form__footer
+        = link_to new_user_registration_path do
+          %h2.form__text アカウント登録へ
