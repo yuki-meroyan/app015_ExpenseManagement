@@ -1,0 +1,47 @@
+
+//  COMMON(一般)設定  //
+
+$mq-breakpoints: (
+  'xsmall': 320px,
+  'small' : 600px,
+  'medium': 768px,
+  'large' : 1024px,
+  'xlarge': 1280px,
+);
+
+@mixin mq($breakpoint: xsmall) {
+  @media screen and (min-width: #{map-get($mq-breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+
+$link-main-color: #432;
+$button-main-color: rgb(153, 240, 151);
+$button-sub-color: rgb(129, 129, 129);
+$button-font-color: #fff;
+$hover-main-color:  rgb(2, 192, 119);
+$hover-font-color: #555555;
+
+$box-color: rgba(162, 235, 184, 0.945);
+$link-color: rgb(79, 161, 77);
+$font-main: rgb(90, 90, 90);
+$font-white: #fff;
+$button-color: #0bd;
+
+//  ID・CLASS指定がない設定  //
+
+%html{
+  font-size: 100%;
+}
+
+%body{
+
+}
+
+%a{
+  text-decoration: none;
+}
+
+%img{
+  max-width: 100%;
+}
