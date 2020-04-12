@@ -5,6 +5,21 @@
   padding: 0 4%;
 }
 
+#home{
+  background-image: url(home-bg.jpg);
+  min-height: 100vh;
+}
+
+.home{
+  &__large-background{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: $background-color;
+    background-blend-mode: screen;
+  }
+}
+
 .page{
   &__header{
     display: flex;
@@ -58,6 +73,7 @@
     color: $button-font-color;
     border-radius: 10px;
     padding: 18px 32px;
+    margin: 0 20px;
   }
 
   &__button:hover{
