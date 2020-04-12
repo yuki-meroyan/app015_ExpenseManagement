@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title App015Expensemanagement
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    - if notice
+      %p.notice = notice
+    - elsif alert
+      %p.alert = alert
+    #home.home__large-background
+      %header.page__header.wrapper
+        %h1
+          = image_tag '', :alt => 'ロゴ'
+        %nav
+          %ul.page__main__nav
+            %li
+              = link_to root_path, class: "page__link" do
+                トップ
+            %li
+              = link_to root_path, class: "page__link" do
+                %h3.page__link__text
+                  タスク管理
+            %li
+              = link_to root_path, class: "page__link" do
+                %h3.page__link__text
+                  経費管理
+            %li
+              = link_to root_path, class: "page__link" do
+                %h3.page__link__text
+                  グループ管理
+      = yield
