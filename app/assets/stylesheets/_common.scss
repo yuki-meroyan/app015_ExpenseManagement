@@ -15,13 +15,16 @@ $mq-breakpoints: (
   }
 }
 
+$font-color: rgb(129, 129, 129);
 $background-color: rgba(165, 225, 145, 0.7);
 $link-main-color: #432;
-$button-main-color: rgb(153, 240, 151);
+$button-main-color: rgb(42, 188, 115);
 $button-sub-color: rgb(129, 129, 129);
 $button-font-color: #fff;
-$hover-main-color:  rgb(2, 192, 119);
-$hover-font-color: #555555;
+$hover-main-color:  #2ABCA7;
+// $hover-font-color: #555555;
+$hover-font-color: #FAFAFA;
+
 
 $box-color: rgba(162, 235, 184, 0.945);
 $link-color: rgb(79, 161, 77);
@@ -36,7 +39,7 @@ $button-color: #0bd;
 }
 
 %body{
-
+  opacity: 1;
 }
 
 %a{
