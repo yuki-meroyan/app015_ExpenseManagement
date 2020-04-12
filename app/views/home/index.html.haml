@@ -1,21 +1,3 @@
-%header.page__header.wrapper
-  %h1
-    = link_to root_path, class: "page__link" do
-      = image_tag '', :alt => 'ロゴ'
-  %nav
-    %ul.page__main__nav
-      %li
-        = link_to root_path, class: "page__link" do
-          %h3.page__link__text
-            タスク管理
-      %li
-        = link_to root_path, class: "page__link" do
-          %h3.page__link__text
-            経費管理
-      %li
-        = link_to root_path, class: "page__link" do
-          %h3.page__link__text
-            グループ管理
 .page__contents.wrapper
   %h2.page__title
     Management
@@ -24,7 +6,10 @@
     %br
     Remember
   %p.page__contents__text
-  = link_to root_path, class: "page__button" do
-    ログインする
+    〜 忘れないための管理補助ツール 〜
+  = link_to new_user_registration_path, class: "page__button" do
+    新規登録
+  = link_to new_user_session_path, class: "page__button" do
+    ログイン
 
 
