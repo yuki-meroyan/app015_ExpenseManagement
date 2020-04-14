@@ -22,15 +22,15 @@
               = link_to root_path, class: "page__link" do
                 トップ
             %li
-              = link_to root_path, class: "page__link" do
+              = link_to tasks_path, class: "page__link" do
                 %h3.page__link__text
                   タスク管理
             %li
-              = link_to root_path, class: "page__link" do
+              = link_to expenses_path, class: "page__link" do
                 %h3.page__link__text
                   経費管理
             %li
-              = link_to root_path, class: "page__link" do
+              = link_to groups_path, class: "page__link" do
                 %h3.page__link__text
                   グループ管理
       = yield
