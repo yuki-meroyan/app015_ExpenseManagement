@@ -18,6 +18,8 @@ module App015Expensemanagement
       g.test_framework false
     end
 
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
     config.i18n.default_locale = :ja
     # config.i18n.default_locale = :jack_o_lantern
     # Settings in config/environments/* take precedence over those specified here.
