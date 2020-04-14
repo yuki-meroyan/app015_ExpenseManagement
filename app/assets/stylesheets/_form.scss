@@ -160,3 +160,60 @@ input, textarea {
   }
 
 }
+
+//  投稿用フォーム  //
+.form__post{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #3cad7e;
+  font-family: 'Arial', sans-serif;
+
+  &__container{
+    h1{
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 50px;
+    }
+  }
+
+  &__wrap{
+    position: relative;
+    width: 500px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  &__textbox{
+    position: relative;
+    display: block;
+    width: 500px;
+    margin-top: 50px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #a0a0a0;
+    outline: none;
+  }
+
+  &__label{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 16px;
+    color: #a0a0a0;
+    transition: all 0.25s ease;
+
+    &.focus{
+      top: -25px;
+      left: 5px;
+      font-size: 14px;
+      color: #fff;
+    }
+  }
+}
