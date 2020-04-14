@@ -87,7 +87,7 @@
 |request_date|date|null: false|
 |delivery_date|date|null: false|
 |status|integer|default: 1|
-|gourp_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :group
 ### Active_hash(status)

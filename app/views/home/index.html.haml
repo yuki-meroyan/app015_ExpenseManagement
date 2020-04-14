@@ -1,2 +1,15 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.page__contents.wrapper
+  %h2.page__title
+    Management
+    %br
+    To
+    %br
+    Remember
+  %p.page__contents__text
+    〜 忘れないための管理補助ツール 〜
+  = link_to new_user_registration_path, class: "page__button" do
+    新規登録
+  = link_to new_user_session_path, class: "page__button" do
+    ログイン
+
+
