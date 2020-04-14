@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  mount_uploader :icon        , GroupIconUploader
+  mount_uploader  :icon       , GroupIconsUploader
   has_one         :group_icon
   has_many        :group_users, dependent: :destroy
   has_many        :users      , through: :group_users
