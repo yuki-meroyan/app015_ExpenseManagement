@@ -5,9 +5,9 @@
         %h2.text-center
           = @group.name + "【所属ユーザー】"
       .form__box
-        .form__lists
+        %ul.form__lists
           - @group.users.each do |group_user|
-            .form__list
+            %li.form__list
               = group_user.nick_name
         .form__footer
           = link_to edit_group_path(@group.id) do
