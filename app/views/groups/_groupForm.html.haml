@@ -20,7 +20,7 @@
           ※メールアドレスの完全一致のみがヒットします
       .modal-footer
         %button.btn.modal__button__close{"data-dismiss" => "modal", :type => "button"} 閉じる
-        %button#appendUser.btn.modal__button__append{type: "button", "data-user-id" => "${user.user_id}", "data-user-name" => "${user.user_name}"} 追加
+        %button#append__user.btn.modal__button__append{type: "button" } 追加
 
 = form_with(model: group, local: true, id: "form__group") do |f|
   .form__box
@@ -31,7 +31,10 @@
   .form__box
     = f.password_field :password, autofocus: false, placeholder: '管理用パスワード'
   .form__box
-    = f.file_field :icon, autofocus: false, value: 'アイコン選択'
+    = f.file_field :icon, autofocus: false
+    -# = f.hidden_field :group[user_ids][], id: "group_user_ids", value: current_user.id
+    %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: current_user.id}
+    = f.hidden_field :master_user, autofocus: false, value: current_user.id
   .form__box
     管理者：
     = current_user.nick_name
@@ -41,19 +44,18 @@
         - @group.users.each do |group_user|
           - if @group.master_user != group_user.id
             %li.form__list
+              %input#group_user_ids{name: "group[user_ids][]", type: "hidden", value: group_user.id}
               = group_user.nick_name
             - if @group.master_user == current_user.id
               .form__list__button
                 削除
     %button.btn.modal__button__append{"data-target" => "#Modal", "data-toggle" => "modal", :type => "button"}
       ユーザーを追加する
-
--# 追加
-  -# .form__search__result__box
-  -#   %img.form__search__image{:src => "${user.user_image.url}"}/
-  -#   .form__search__name
-  -#     ${user.user_name}
-  -#   #form__add__button.form__search__button.button{"data-user-id" => "${user.user_id}", "data-user-image" => "${user.user_image.url}", "data-user-name" => "${user.user_name}"} 追加
+  .form__box
+    = f.submit buttonName, class: "form__button"
+.form__footer
+  = link_to groups_path do
+    %h2.form__text グループトップ
 
 -# 削除
   -# .form__search__result__box
@@ -61,13 +63,3 @@
   -# %img.form__search__image{:src => "${user.user_image}"}/
   -# .form__search__name ${user.user_name}
   -# #form__remove__button.form__search__button.button 削除
-
-
-
-
-
-  .form__box
-    = f.submit buttonName, class: "form__button"
-.form__footer
-  = link_to groups_path do
-    %h2.form__text グループトップ
