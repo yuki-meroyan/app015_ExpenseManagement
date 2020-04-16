@@ -111,14 +111,22 @@
   }
 
   &__lists{
+    list-style: none;
   }
 
   &__list{
+    display: inline-block;
+    width: 300px;
     text-align: left;
-    padding-left: 3rem;
+    // padding-left: 3rem;
     color: $list-font-color;
     font-size: 1.5rem;
     font-weight: bold;
+
+    &__button{
+      width: 50px;
+      display: inline-block;
+    }
   }
 }
 
