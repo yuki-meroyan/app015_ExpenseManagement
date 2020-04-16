@@ -1,0 +1,17 @@
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        %h2.text-center
+          = @group.name + "【所属ユーザー】"
+      .form__box
+        .form__lists
+          - @group.users.each do |group_user|
+            .form__list
+              = group_user.nick_name
+        .form__footer
+          = link_to edit_group_path(@group.id) do
+            %h2.form__text 追加・削除
+        .form__footer
+          = link_to groups_path do
+            %h2.form__text グループトップ
