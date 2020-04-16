@@ -1,9 +1,10 @@
 $(function() {
 
   var user_list = $("#modal__search__result");
+  var group_list = $(".form__lists");
 
   function appendUser(user){
-    var html = `<div class="modal__search__result">
+    var html = `<div class="modal__search__result", data-user-id="${user.user_id}", data-user-name="${user.user_name}", data-user-mail="${user.user_mail}">
                   <p>${user.user_name}</p>
                 </div>
                 `
@@ -18,40 +19,36 @@ $(function() {
     user_list.append(html);
   }
 
-  function appendGroup(user){
-    var html = `<div class="form__search__result__box">
-                  <input id="group_user_ids" name="group[user_ids][]" type="hidden" value="${user.user_id}"></input>
-                  <img class="form__search__image" src="${user.user_image}">
-                  <div class="form__search__name">${user.user_name}</div>
-                  <div class="form__search__button button" id="form__remove__button">削除</div>
-                </div>
+  function appendGroup(id,name,mail){
+    var html = `<ul class="form__lists">
+                  <li class="form__list">
+                  <input id="group_user_ids" name="group[user_ids][]" type="hidden" value="${id}">
+                    ${name}
+                  <div class="form__list__button">
+                    削除
+                  </div>
+                  </li>
+                </ul>
                 `
     group_list.append(html);
   };
 
   var searchVal= ""
   $('#modal__search__button').on('click', function(){
-
     searchVal = $('#modal__search__user').val();
     searchGmail = searchVal.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@gmail.com*$/)
     if (searchGmail != null) {
-      // $('input[name="group[user_ids][]"]').each(function(i,user){
-      //   users.push($(user).val());
-      // })
       $.ajax({
         type: 'GET',
         url:  '/users',
         data: {
                 gmail: searchVal
-                // ,
-                // selected_users: users
               },
         dataType: 'json'
       }).done(function(user){
         // 成功の場合の処理
         $('#modal__search__result').empty();
         if (user != null) {
-          console.log(user.user_name)
           appendUser(user);
         }
         else {
@@ -63,32 +60,24 @@ $(function() {
         $('#modal__search__result').empty();
         appendErrMsgToHTML("該当するユーザーは存在しません");
       });
-    //   $.ajax({
-    //   type: 'GET',
-    //   url: '/users',
-    //   data: {
-    //           keyword: input,
-    //           selected_users: users
-    //         },
-    //   dataType: 'json'
-    //   })
-    //   .done(function(users) {
-    //     $('#form__search__result').empty();
-    //     if (users.length !== 0) {
-    //       users.forEach(function(user){
-    //       appendUser(user);
-    //       });
-    //     }
-    //     else {
-    //       appendErrMsgToHTML("ユーザー検索に失敗しました");
-    //     }
-    //   })
     } else {
-      alert ("アドレスが正しくありません「@gmail.com」で検索してください")
+      $('#modal__search__result').empty();
+      appendErrMsgToHTML("アドレスが正しくありません");
+      appendErrMsgToHTML("「@gmail.com」で検索してください");
     }
   });
 
-  $('#appendUser').on('click', function(){
-
+  $('#append__user').on('click', function(){
+    var userId = $('.modal__search__result').data('user-id')
+    var userName = $('.modal__search__result').data('user-name')
+    var userMail = $('.modal__search__result').data('user-mail')
+    $('body').removeClass('modal-open');
+    $('#Modal').modal('hide');
+    $('#Modal').css('display', 'none');
+    $('.modal-backdrop').modal('hide');
+    appendGroup(userId,userName,userMail);
   });
 });
+
+{/* <div aria-labelledby="Modal" class="modal fade show" id="Modal" role="dialog" tabindex="-1" style="display: block;" aria-modal="true">
+<div aria-labelledby="Modal" class="modal fade" id="Modal" role="dialog" tabindex="-1" style="display: none;" aria-hidden="true"> */}
