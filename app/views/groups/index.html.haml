@@ -23,25 +23,27 @@
         %td.article__heading.article__category__content.article__category__content--link
           リンク
     %table.article__category__contents
-      -# - @groups.each do |group|
-      -#   %tr.article__category__content
-      -#     %td.article__category__content.article__category__content--title
-      -#       - if group.master == current_user.id
-      -#         = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
-      -#       - else
-      -#         = group.name
-      -#     %td.article__category__content.article__category__content--master
-      -#       = link_to group.master_name, user_path(id: group.master), class: "article__category__content--link"
-      -#     %td.article__category__content.article__category__content--members
-      -#       = group.users.count
-      -#       人
-      -#     %td.article__category__content.article__category__content--detail
-      -#       = group.detail
-      -#     %td.article__category__content
-      -#       - if group.users.include?(current_user)
-      -#         = link_to "メッセージ", group_group_messages_path(group.id), class: "article__category__content--link"
-      -#       - else
-      -#         未所属
+      - @groups.each do |group|
+        %tr.article__category__content
+          %td.article__category__content.article__category__content--title
+            = group.name
+            -# - if group.master_user == current_user.id
+            -#   = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
+            -# - else
+            -#   = group.name
+          %td.article__category__content.article__category__content--master
+            マスターユーザー名
+            -# = link_to group.master, user_path(id: group.master), class: "article__category__content--link"
+          %td.article__category__content.article__category__content--members
+            = group.users.count
+            人
+          %td.article__category__content.article__category__content--detail
+            = group.detail
+          -# %td.article__category__content
+          -#   - if group.users.include?(current_user)
+          -#     = link_to "メッセージ", group_group_messages_path(group.id), class: "article__category__content--link"
+          -#   - else
+          -#     未所属
 
 
 .search__form__contents
