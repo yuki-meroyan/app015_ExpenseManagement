@@ -1,3 +1,26 @@
+/ モーダルの設定
+#Modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "Modal", :role => "dialog", :tabindex => "-1"}
+  / 以下modal-dialogのCSSの部分で modal-lgやmodal-smを追加するとモーダルのサイズを変更することができる
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#Modal.modal-title ユーザーの追加
+        %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        .modal__search--title
+          追加したいユーザーを検索できます
+        .modal__search__form
+          %input#modal__search__user.modal__search__box{placeholder: "  追加したいユーザーのメールアドレスを入力してください", type: "text"}
+          %button#modal__search__button.modal__search__button
+            検索
+        #modal__search__result
+          -# ココに検索にヒットしたユーザーをjsで表示する
+        .modal__search--text
+          ※メールアドレスの完全一致のみがヒットします
+      .modal-footer
+        %button.btn.modal__button__close{"data-dismiss" => "modal", :type => "button"} 閉じる
+        %button#appendUser.btn.modal__button__append{type: "button", "data-user-id" => "${user.user_id}", "data-user-name" => "${user.user_name}"} 追加
 
 = form_with(model: group, local: true, id: "form__group") do |f|
   .form__box
@@ -12,8 +35,39 @@
   .form__box
     管理者：
     = current_user.nick_name
+  - if edit_flg == 1
+    .form__box
+      %ul.form__lists
+        - @group.users.each do |group_user|
+          - if @group.master_user != group_user.id
+            %li.form__list
+              = group_user.nick_name
+            - if @group.master_user == current_user.id
+              .form__list__button
+                削除
+    %button.btn.modal__button__append{"data-target" => "#Modal", "data-toggle" => "modal", :type => "button"}
+      ユーザーを追加する
+
+-# 追加
+  -# .form__search__result__box
+  -#   %img.form__search__image{:src => "${user.user_image.url}"}/
+  -#   .form__search__name
+  -#     ${user.user_name}
+  -#   #form__add__button.form__search__button.button{"data-user-id" => "${user.user_id}", "data-user-image" => "${user.user_image.url}", "data-user-name" => "${user.user_name}"} 追加
+
+-# 削除
+  -# .form__search__result__box
+  -# %input#group_user_ids{:name => "group[user_ids][]", :type => "hidden", :value => "${user.user_id}"}/
+  -# %img.form__search__image{:src => "${user.user_image}"}/
+  -# .form__search__name ${user.user_name}
+  -# #form__remove__button.form__search__button.button 削除
+
+
+
+
+
   .form__box
-    = f.submit 'グループ作成', class: "form__button"
+    = f.submit buttonName, class: "form__button"
 .form__footer
   = link_to groups_path do
     %h2.form__text グループトップ
