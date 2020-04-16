@@ -3,4 +3,4 @@
     .form__content
       .form__head
         %h2 グループ新規登録
-      = render 'groupForm', { group: @group }
+      = render 'groupForm', { group: @group, buttonName: :"グループ作成", edit_flg: 0 }
