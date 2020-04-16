@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Tasks.new
+    @task = Task.new
   end
 
   def create
