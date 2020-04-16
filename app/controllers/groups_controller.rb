@@ -1,10 +1,10 @@
 class GroupsController < ApplicationController
-  # before_action :user_signed_check
+  before_action :user_signed_check
   before_action :set_group        , only: [:edit, :update]
 
   def index
     # @group = Group.ransack(params[:q])
-    # @groups = @group.result(distinct: true).includes(:users)
+    @groups = @group.result(distinct: true).includes(:users)
   end
 
   def new
@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
   protected
 
   def group_params
-    # params.require(:group).permit(:name, :master, :master_name, :detail, { user_ids: [] } )
+    params.require(:group).permit(:name, :master_user, :password, :icon, { user_ids: [] } )
   end
 
   def set_group
