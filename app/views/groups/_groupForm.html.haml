@@ -1,36 +1,74 @@
 
-= form_with(model: group, local: true) do |f|
-  .form__content
-    = f.label :name, class: "form__label"
-    = f.text_field :name, class: "form__box", placeholder: '  グループ名を入力してください'
-  .form__content
-    = f.label :master, class: "form__label"
-    = current_user.name
-    = f.text_field :master, value: current_user.id, class: "form__box", hidden: true
-    = f.text_field :master_name, value: current_user.name, class: "form__box", hidden: true
-  .form__content
-    = f.label :detail, class: "form__label"
-    = f.text_area :detail, class: "form__box", placeholder: '  グループの詳細を入力してください'
-  .form__content
-    %label.form__label{for: "chat_group_チャットメンバーを追加"} グループメンバーを追加
-    %input#search__user__field.form__box{placeholder: "  追加したいユーザー名を入力してください", type: "text"}
-  .form__content
-    .form__label
-    #form__search__result
+= form_with(model: group, local: true, id: "form__group") do |f|
+  .form__box
+    .form__text
+      -# = devise_error_messages!
+  .form__box
+    = f.text_field :name, autofocus: false, placeholder: 'グループ名'
+  .form__box
+    = f.password_field :password, autofocus: false, placeholder: '管理用パスワード'
+  .form__box
+    = f.file_field :icon, autofocus: false, value: 'アイコン選択'
+  .form__box
+    管理者：
+    = current_user.nick_name
+  .form__box
+    = f.submit 'グループ作成', class: "form__button"
+.form__footer
+  = link_to new_user_session_path do
+    %h2.form__text ログイン画面へ
+-# .form__contents
+-#   .col-lg-4.col-md-6.ml-auto.mr-auto
+-#     .form__content
+-#       .form__head
+-#         %h2.text-center 新規登録
+-#         = form_with(model: group, local: true, id: "form__group") do |f|
+-#           .form__box
+-#             .form__text
+-#               -# = devise_error_messages!
+-#           .form__box
+-#             = f.email_field :name, autofocus: false, placeholder: 'グループ名'
+-#           .form__box
+-#             = f.text_field :password, autofocus: false, placeholder: '管理用パスワード'
+-#           .form__box
+-#             = f.file_field :icon, autofocus: false, placeholder: 'アイコン選択'
+-#           .form__box
+-#             = f.text_field :master_user, autofocus: false, value: current_user.nick_name
+-#           .form__box
+-#             = f.submit 'グループ作成', class: "form__button"
+-#         .form__footer
+-#           = link_to new_user_session_path do
+-#             %h2.form__text ログイン画面へ
 
-  .form__content
-    .form__label
-      参加者
-    #form__group__users
-      - @group.users.each do |user|
-        .form__search__result__box
-          %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}
-          = image_tag user.image.url, class: "form__search__image" if user.image.url
-          .form__search__name
-            = user.name
-          - if user.id != current_user.id
-            #form__remove__button.form__search__button.button
-              削除
+  -# .form__content
+  -#   = f.label :name, class: "form__label"
+  -#   = f.text_field :name, class: "form__box", placeholder: '  グループ名を入力してください'
+  -# .form__content
+  -#   = f.label :master_user, class: "form__label"
+  -#   = current_user.nick_name
+  -#   = f.text_field :master_user, value: current_user.id, class: "form__box", hidden: true
+  -# .form__content
+  -#   = f.label :detail, class: "form__label"
+  -#   = f.text_area :detail, class: "form__box", placeholder: '  グループの詳細を入力してください'
+  -# .form__content
+  -#   %label.form__label{for: "chat_group_チャットメンバーを追加"} グループメンバーを追加
+  -#   %input#search__user__field.form__box{placeholder: "  追加したいユーザー名を入力してください", type: "text"}
+  -# .form__content
+  -#   .form__label
+  -#   #form__search__result
 
-  .form__content
-    = f.submit class: "form__button"
+  -# .form__content
+  -#   .form__label
+  -#     参加者
+  -#   #form__group__users
+  -#     - @group.users.each do |user|
+  -#       .form__search__result__box
+  -#         %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}
+  -#         .form__search__name
+  -#           = user.nick_name
+  -#         - if user.id != current_user.id
+  -#           #form__remove__button.form__search__button.button
+  -#             削除
+
+  -# .form__content
+  -#   = f.submit class: "form__button"
