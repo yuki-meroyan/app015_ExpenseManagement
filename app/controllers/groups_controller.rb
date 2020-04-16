@@ -1,15 +1,20 @@
 class GroupsController < ApplicationController
   before_action :user_signed_check
-  before_action :set_group        , only: [:edit, :update]
+  before_action :set_group        , only: [:show, :edit, :update]
 
   def index
     # @group = Group.ransack(params[:q])
-    @groups = @group.result(distinct: true).includes(:users)
+    # @groups = @group.result(distinct: true).includes(:users)
+    # binding.pry
+    @groups = GroupUser.where(user_id: current_user.id)
   end
 
   def new
     @group = Group.new
     @group.users << current_user
+  end
+
+  def show
   end
 
   def edit
@@ -39,7 +44,7 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    # @group = Group.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
 end
