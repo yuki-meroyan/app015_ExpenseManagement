@@ -7,9 +7,14 @@
     Remember
   %p.page__contents__text
     〜 忘れないための管理補助ツール 〜
-  = link_to new_user_registration_path, class: "page__button" do
-    新規登録
-  = link_to new_user_session_path, class: "page__button" do
-    ログイン
-
+  - if user_signed_in?
+    = link_to edit_user_registration_path, class: "page__button" do
+      編集
+    = link_to destroy_user_session_path, method: :delete, class: "page__button" do
+      ログアウト
+  - else
+    = link_to new_user_registration_path, class: "page__button" do
+      新規登録
+    = link_to new_user_session_path, class: "page__button" do
+      ログイン
 
