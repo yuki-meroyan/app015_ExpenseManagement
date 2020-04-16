@@ -3,9 +3,6 @@ class GroupsController < ApplicationController
   before_action :set_group        , only: [:show, :edit, :update]
 
   def index
-    # @group = Group.ransack(params[:q])
-    # @groups = @group.result(distinct: true).includes(:users)
-    # binding.pry
     @groups = GroupUser.where(user_id: current_user.id)
   end
 
@@ -23,7 +20,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to root_path, notice: 'グループを作成しました'
+      redirect_to groups_path, notice: 'グループを作成しました'
     else
       render :new
     end
@@ -31,7 +28,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to engineer_connect_bots_have_group_path(current_user.id), notice: 'グループを編集しました'
+      redirect_to groups_path, notice: 'グループ情報を更新しました'
     else
       render :edit
     end
