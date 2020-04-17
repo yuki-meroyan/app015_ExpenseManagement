@@ -1,17 +1,13 @@
-.form
-  .form__contents
-    
-%table.table__content
-  %thead
-    %tr
-      %td{scope: "col"} グループ名
-      %th{scope: "col"} 管理リンク
-  %tbody
-    - if @groups
-      - @groups.each do |group|
-        %tr
-          %th.table__content--link{"data-label" => "所属グループ"}
-            = group.group.name
-          %td.table__content--link{"data-label" => "管理リンク"}
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        %h2.form__text 所属グループ一覧
+      .form__box
+        .form__text
+      - if @groups
+        - @groups.each do |group|
+          .form__box
             = link_to group_tasks_path(group.group.id) do
-              = group.group.name
+              .form__button
+                = group.group.name
