@@ -2,9 +2,13 @@
   &__button{
 
     &__append{
-      color: $button-font-color;
+      color: $list-font-color;
       background-color: $button-main-color;
       border-color: $button-main-color;
+    }
+
+    &__append:hover{
+      color: $button-font-color;
     }
 
     &__close{
