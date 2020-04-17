@@ -1,0 +1,13 @@
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        %h2.form__text 所属グループ一覧
+      .form__box
+        .form__text
+      - if @groups
+        - @groups.each do |group|
+          .form__box
+            = link_to group_tasks_path(group.group.id) do
+              .form__button
+                = group.group.name

@@ -1,48 +1,17 @@
-.form
-  .form__contents
-    = link_to new_group_path do
-      NEW
-    -# = search_form_for @group, class: "mb-5" do |f|
-    -#   .form__search__content
-    -#     = f.label :name_cont, 'グループ名', class: "form__search__label"
-    -#     = f.search_field :name_cont, class: "form__search__box", placeholder: "検索したいグループ名を入力してください", type: "text"
-    -#   .form__content
-    -#     = f.submit class: "form__button"
-.article__contents
-  .article__category
-    %table.article__category__contents
-      %tr.article__category__content
-        %td.article__heading.article__category__content.article__category__content--title
-          グループ名
-        %td.article__heading.article__category__content.article__category__content--master
-          管理者
-        %td.article__heading.article__category__content.article__category__content--members
-          所属人数
-        %td.article__heading.article__category__content.article__category__content--detail
-          詳細
-        %td.article__heading.article__category__content.article__category__content--link
-          リンク
-    %table.article__category__contents
-      -# - @groups.each do |group|
-      -#   %tr.article__category__content
-      -#     %td.article__category__content.article__category__content--title
-      -#       - if group.master == current_user.id
-      -#         = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
-      -#       - else
-      -#         = group.name
-      -#     %td.article__category__content.article__category__content--master
-      -#       = link_to group.master_name, user_path(id: group.master), class: "article__category__content--link"
-      -#     %td.article__category__content.article__category__content--members
-      -#       = group.users.count
-      -#       人
-      -#     %td.article__category__content.article__category__content--detail
-      -#       = group.detail
-      -#     %td.article__category__content
-      -#       - if group.users.include?(current_user)
-      -#         = link_to "メッセージ", group_group_messages_path(group.id), class: "article__category__content--link"
-      -#       - else
-      -#         未所属
-
-
-.search__form__contents
-  .search__form__content
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        = link_to new_group_path do
+          %h2.form__text グループ新規作成
+      .form__box
+        .form__text
+      - if @groups
+        - @groups.each do |group|
+          .form__box
+            = link_to group_path(group.group.id) do
+              .form__button
+                = group.group.name
+      .form__footer
+        -# = link_to new_user_session_path do
+        -#   %h2.form__text ログイン画面へ

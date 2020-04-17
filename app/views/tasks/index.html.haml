@@ -1,0 +1,118 @@
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        = link_to new_group_task_path(@group) do
+          %h2.form__text  新規タスク作成
+%table.table__content
+  %thead
+    %tr
+      %td{scope: "col"} 依頼日
+      %th{scope: "col"} クライアント
+      %th{scope: "col"} 納期
+      %th{scope: "col"} タイトル
+      %th{scope: "col"}
+      %th{scope: "col"}
+  %tbody
+    - if @tasks
+      - @tasks.each do |task|
+        %tr
+          %th.table__content--link{"data-label" => "依頼日"}
+            = task.request_date
+          %td.table__content--link{"data-label" => "クライアント"}
+            = task.client_name
+          %td.table__content--link{"data-label" => "納期"}
+            = task.delivery_date
+          %td.table__content--link{"data-label" => "タイトル"}
+            = task.title
+          %td.table__content--link
+            = link_to task_path(task, group_id: task.group_id) do
+              詳細
+          %td.table__content--link
+            = link_to edit_task_path(task, group_id: task.group_id) do
+              編集
+    - else
+      %tr
+        %th 未所属
+        %td.table__content--link
+    
+    -#   %td.table__content--price{"data-label" => "価格"} ¥3,000
+    -# %tr
+    -#   %th カスタムプラン
+    -#   %td.table__content--text{"data-label" => "内容"} 必要なものだけ揃えられるカスタムプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥4,000
+    -# %tr
+    -#   %th プレミアムプラン
+    -#   %td.table__content--text{"data-label" => "内容"} 全ておまかせのプレミアムプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥10,000
+    -# %tr
+    -#   %th ベーシックプラン
+    -#   %td.table__content--text{"data-label" => "内容"} はじめての方向け。ベーシックなお試しプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥3,000
+    -# %tr
+    -#   %th カスタムプラン
+    -#   %td.table__content--text{"data-label" => "内容"} 必要なものだけ揃えられるカスタムプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥4,000
+    -# %tr
+    -#   %th プレミアムプラン
+    -#   %td.table__content--text{"data-label" => "内容"} 全ておまかせのプレミアムプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥10,000
+    -# %tr
+    -#   %th ベーシックプラン
+    -#   %td.table__content--text{"data-label" => "内容"} はじめての方向け。ベーシックなお試しプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥3,000
+    -# %tr
+    -#   %th カスタムプラン
+    -#   %td.table__content--text{"data-label" => "内容"} 必要なものだけ揃えられるカスタムプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥4,000
+    -# %tr
+    -#   %th プレミアムプラン
+    -#   %td.table__content--text{"data-label" => "内容"} 全ておまかせのプレミアムプラン
+    -#   %td.table__content--price{"data-label" => "価格"} ¥10,000
+
+    -# = search_form_for @group, class: "mb-5" do |f|
+    -#   .form__search__content
+    -#     = f.label :name_cont, 'グループ名', class: "form__search__label"
+    -#     = f.search_field :name_cont, class: "form__search__box", placeholder: "検索したいグループ名を入力してください", type: "text"
+    -#   .form__content
+    -#     = f.submit class: "form__button"
+-# .article__contents
+-#   .article__category
+-#     %table.article__category__contents
+-#       %tr.article__category__content
+-#         %td.article__heading.article__category__content.article__category__content--title
+-#           グループ名
+-#         %td.article__heading.article__category__content.article__category__content--master
+-#           管理者
+-#         %td.article__heading.article__category__content.article__category__content--members
+-#           所属人数
+-#         %td.article__heading.article__category__content.article__category__content--detail
+-#           詳細
+-#         %td.article__heading.article__category__content.article__category__content--link
+-#           リンク
+    -# %table.article__category__contents
+    -#   - @groups.each do |group|
+    -#     %tr.article__category__content
+    -#       %td.article__category__content.article__category__content--title
+    -#         = group.name
+    -#         - if group.master_user == current_user.id
+    -#           = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
+    -#         - else
+    -#           = group.name
+    -#       %td.article__category__content.article__category__content--master
+    -#         マスターユーザー名
+    -#         = link_to group.master, user_path(id: group.master), class: "article__category__content--link"
+    -#       %td.article__category__content.article__category__content--members
+    -#         = group.users.count
+    -#         人
+    -#       %td.article__category__content.article__category__content--detail
+    -#         = group.detail
+    -#       %td.article__category__content
+    -#         - if group.users.include?(current_user)
+    -#           = link_to "メッセージ", group_group_messages_path(group.id), class: "article__category__content--link"
+    -#         - else
+    -#           未所属
+
+
+-# .search__form__contents
+-#   .search__form__content

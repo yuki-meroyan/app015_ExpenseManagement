@@ -1,15 +1,17 @@
 class GroupsController < ApplicationController
-  # before_action :user_signed_check
-  before_action :set_group        , only: [:edit, :update]
+  before_action :user_signed_check
+  before_action :set_group        , only: [:show, :edit, :update]
 
   def index
-    # @group = Group.ransack(params[:q])
-    # @groups = @group.result(distinct: true).includes(:users)
+    @groups = GroupUser.where(user_id: current_user.id)
   end
 
   def new
     @group = Group.new
     @group.users << current_user
+  end
+
+  def show
   end
 
   def edit
@@ -18,7 +20,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to root_path, notice: 'グループを作成しました'
+      redirect_to groups_path, notice: 'グループを作成しました'
     else
       render :new
     end
@@ -26,7 +28,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to engineer_connect_bots_have_group_path(current_user.id), notice: 'グループを編集しました'
+      redirect_to groups_path, notice: 'グループ情報を更新しました'
     else
       render :edit
     end
@@ -35,11 +37,11 @@ class GroupsController < ApplicationController
   protected
 
   def group_params
-    # params.require(:group).permit(:name, :master, :master_name, :detail, { user_ids: [] } )
+    params.require(:group).permit(:name, :master_user, :password, :icon, { user_ids: [] } )
   end
 
   def set_group
-    # @group = Group.find(params[:id])
+    @group = Group.find(params[:id])
   end
 
 end

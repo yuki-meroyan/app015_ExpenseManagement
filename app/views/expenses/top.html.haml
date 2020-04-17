@@ -1,0 +1,17 @@
+.form
+  .form__contents
+
+%table.table__content
+  %thead
+    %tr
+      %td{scope: "col"} グループ名
+      %th{scope: "col"} 管理リンク
+  %tbody
+    - if @groups
+      - @groups.each do |group|
+        %tr
+          %th.table__content--link{"data-label" => "所属グループ"}
+            = group.group.name
+          %td.table__content--link{"data-label" => "管理リンク"}
+            = link_to group_expenses_path(group.group.id) do
+              = group.group.name

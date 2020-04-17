@@ -35,6 +35,12 @@
         .form__box
           = f.email_field :email, autofocus: false, placeholder: 'Gmail'
         .form__box
+          = f.text_field :family_name, autofocus: false, placeholder: '氏'
+        .form__box
+          = f.text_field :first_name, autofocus: false, placeholder: '名'
+        .form__box
+          = f.text_field :nick_name, autofocus: false, placeholder: 'ニックネーム'
+        .form__box
           .form__text
             - if @minimum_password_length
               %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
