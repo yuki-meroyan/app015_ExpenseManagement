@@ -20,15 +20,15 @@ $(function() {
   }
 
   function appendGroup(id,name,mail){
-    var html = `<ul class="form__lists">
+    var html = `<div class="form__list__box">
                   <li class="form__list">
-                  <input id="group_user_ids" name="group[user_ids][]" type="hidden" value="${id}">
-                    ${name}
+                    <input id="group_user_ids" name="group[user_ids][]" type="hidden" value="${id}">
+                      ${name}
+                  </li>
                   <div class="form__list__button">
                     削除
                   </div>
-                  </li>
-                </ul>
+                </div>
                 `
     group_list.append(html);
   };
@@ -77,6 +77,12 @@ $(function() {
     $('.modal-backdrop').modal('hide');
     appendGroup(userId,userName,userMail);
   });
+
+  $('#form__group__users').on('click', '.form__list__button', function(e){
+    var parent = $(this).parent();
+    parent.empty(this);
+  });
+
 });
 
 {/* <div aria-labelledby="Modal" class="modal fade show" id="Modal" role="dialog" tabindex="-1" style="display: block;" aria-modal="true">
