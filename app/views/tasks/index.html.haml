@@ -1,43 +1,40 @@
-.form
-  .form__contents
-    = link_to new_task_path do
-      NEW
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        = link_to new_group_task_path(@group) do
+          %h2.form__text  新規タスク作成
 %table.table__content
   %thead
     %tr
-      %td{scope: "col"} 所属グループ
-      %th{scope: "col"} リンク
+      %td{scope: "col"} 依頼日
+      %th{scope: "col"} クライアント
+      %th{scope: "col"} 納期
+      %th{scope: "col"} タイトル
+      %th{scope: "col"}
+      %th{scope: "col"}
   %tbody
-    - if @groups
-      - @groups.each do |group|
+    - if @tasks
+      - @tasks.each do |task|
         %tr
-          %th.table__content--link{"data-label" => "所属グループ"}
-            aaa
-          %td.table__content--link{"data-label" => "リンク"}
-            link
-
-          -# %tr.article__category__content
-          -#   %td.article__category__content.article__category__content--title
-          -#     = group.name
-          -#     - if group.master_user == current_user.id
-          -#       = link_to group.name, edit_group_path(group.id), class: "article__category__content--link"
-          -#     - else
-          -#       = group.name
-          -#   %td.article__category__content.article__category__content--master
-          -#     マスターユーザー名
-          -#     -# = link_to group.master, user_path(id: group.master), class: "article__category__content--link"
-          -#   %td.article__category__content.article__category__content--members
-          -#     = group.users.count
-          -#     人
-          -#   %td.article__category__content.article__category__content--detail
-          -#     = group.detail
-          -#   %td.article__category__content
-          -#     - if group.users.include?(current_user)
-          -#       = link_to "メッセージ", group_group_messages_path(group.id), class: "article__category__content--link"
+          %th.table__content--link{"data-label" => "依頼日"}
+            = task.request_date
+          %td.table__content--link{"data-label" => "クライアント"}
+            = task.client_name
+          %td.table__content--link{"data-label" => "納期"}
+            = task.delivery_date
+          %td.table__content--link{"data-label" => "タイトル"}
+            = task.title
+          %td.table__content--link
+            = link_to task_path(task, group_id: task.group_id) do
+              詳細
+          %td.table__content--link
+            = link_to edit_task_path(task, group_id: task.group_id) do
+              編集
     - else
       %tr
         %th 未所属
-        %td.table__content--link{"data-label" => "リンク"}
+        %td.table__content--link
     
     -#   %td.table__content--price{"data-label" => "価格"} ¥3,000
     -# %tr
