@@ -23,12 +23,12 @@
 .form__box
   = f.label :request_date, class: "form__post__label" do
     依頼日
-  = f.text_field :request_date, class: "form__post__textbox", placeholder: '依頼日を入力してください', value: task.request_date
+  = f.text_field :request_date, id: "datepicker__request", class: "form__post__textbox", autocomplete: "off", placeholder: '依頼日を入力してください', value: task.request_date
 
 .form__box
   = f.label :delivery_date, class: "form__post__label" do
     納期
-  = f.text_field :delivery_date, class: "form__post__textbox", placeholder: '納期を入力してください', value: task.delivery_date
+  = f.text_field :delivery_date, id: "datepicker__delivery", class: "form__post__textbox", autocomplete: "off", placeholder: '納期を入力してください', value: task.delivery_date
 
 .form__box
   = f.label :group_id, class: "form__post__label" do
