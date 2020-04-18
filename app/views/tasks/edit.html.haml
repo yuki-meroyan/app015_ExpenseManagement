@@ -3,7 +3,6 @@
     .form__content
       .form__head
         %h2.form__text グループ編集
-%input#datepicker{:type => "text"}
 .form__post__wrap
   = form_with(model: @task, local: true, id: "form__task") do |f|
     = render 'taskForm', { group: @group, task: @task, f: f}
