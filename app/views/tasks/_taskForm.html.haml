@@ -1,32 +1,39 @@
 -# .form__post__wrap
 -#   = form_with(model: [group, task], local: true, id: "form__task") do |f|
-= f.label :title, class: "form__post__label" do
-  タイトル
-= f.text_field :title, class: "form__post__textbox", placeholder: 'タイトルを入力してください', value: task.title
+.form__box
+  = f.label :title, class: "form__post__label" do
+    タイトル
+  = f.text_field :title, class: "form__post__textbox", placeholder: 'タイトルを入力してください', value: task.title
 
-= f.label :client_user, class: "form__post__label" do
-  クライアント担当者名
-= f.text_field :client_user, class: "form__post__textbox", placeholder: '担当者を入力してください', value: task.client_user
+.form__box
+  = f.label :client_user, class: "form__post__label" do
+    クライアント担当者名
+  = f.text_field :client_user, class: "form__post__textbox", placeholder: '担当者を入力してください', value: task.client_user
 
-= f.label :client_name, class: "form__post__label" do
-  クライアント企業名
-= f.text_field :client_name, class: "form__post__textbox", placeholder: '企業名を入力してください', value: task.client_name
+.form__box
+  = f.label :client_name, class: "form__post__label" do
+    クライアント企業名
+  = f.text_field :client_name, class: "form__post__textbox", placeholder: '企業名を入力してください', value: task.client_name
 
-= f.label :detail, class: "form__post__label" do
-  備考・詳細
-= f.text_area :detail, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: task.detail
+.form__box
+  = f.label :detail, class: "form__post__label" do
+    備考・詳細
+  = f.text_area :detail, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: task.detail
 
-= f.label :request_date, class: "form__post__label" do
-  依頼日
-= f.text_field :request_date, class: "form__post__textbox", placeholder: '依頼日を入力してください', value: task.request_date
+.form__box
+  = f.label :request_date, class: "form__post__label" do
+    依頼日
+  = f.text_field :request_date, class: "form__post__textbox", placeholder: '依頼日を入力してください', value: task.request_date
 
-= f.label :delivery_date, class: "form__post__label" do
-  納期
-= f.text_field :delivery_date, class: "form__post__textbox", placeholder: '納期を入力してください', value: task.delivery_date
+.form__box
+  = f.label :delivery_date, class: "form__post__label" do
+    納期
+  = f.text_field :delivery_date, class: "form__post__textbox", placeholder: '納期を入力してください', value: task.delivery_date
 
-= f.label :group_id, class: "form__post__label" do
-  グループ
-= f.hidden_field :group_id, class: "form__post__textbox", value: group.id
+.form__box
+  = f.label :group_id, class: "form__post__label" do
+    グループ
+  = f.hidden_field :group_id, class: "form__post__textbox", value: group.id
 
 = f.submit class: "form__post__button"
 
