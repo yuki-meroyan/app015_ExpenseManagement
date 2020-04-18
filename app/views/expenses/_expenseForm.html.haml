@@ -3,7 +3,7 @@
 
 = f.label :order_date, class: "form__post__label" do
   作成日
-= f.text_field :order_date, class: "form__post__textbox", placeholder: '作成日を入力してください', value: expense.order_date
+= f.text_field :order_date, id: "datepicker__order", class: "form__post__textbox", autocomplete: "off", placeholder: '作成日を入力してください', value: expense.order_date
 
 = f.label :content, class: "form__post__label" do
   内容
@@ -21,13 +21,9 @@
   備考・詳細
 = f.text_area :remarks, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: expense.remarks
 
-= f.label :request_date, class: "form__post__label" do
-  依頼日
-= f.text_field :request_date, class: "form__post__textbox", placeholder: '依頼日を入力してください', value: expense.request_date
-
 = f.label :receipt_file_name, class: "form__post__label" do
   領収書ファイル名
-= f.text_field :receipt_file_name, class: "form__post__textbox", placeholder: 'ファイル名を入力してください', value: expense.request_date
+= f.text_field :receipt_file_name, class: "form__post__textbox", placeholder: 'ファイル名を入力してください', value: expense.receipt_file_name
 
 = f.label :receipt_file, class: "form__post__label" do
   領収書ファイル
