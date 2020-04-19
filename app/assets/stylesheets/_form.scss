@@ -206,58 +206,73 @@ input, textarea {
 }
 
 //  投稿用フォーム  //
-.form__post{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background-color: #3cad7e;
-  font-family: 'Arial', sans-serif;
+.form {
 
-  &__container{
-    h1{
-      color: #fff;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 50px;
+  &__post{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #3cad7e;
+    font-family: 'Arial', sans-serif;
+
+    &__button{
+      width: 100%;
+      color: $list-font-color;
+      background-color: $button-sub-color;
     }
-  }
 
-  &__wrap{
-    position: relative;
-    width: 500px;
-    height: 100px;
-    margin: 0 auto;
-  }
+    &__button:hover{
+      width: 100%;
+      color: $button-font-color;
+      background-color: $button-main-color;
+    }
 
-  &__textbox{
-    position: relative;
-    display: block;
-    width: 500px;
-    margin-top: 50px;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #a0a0a0;
-    outline: none;
-  }
+    &__container{
+      h1{
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 50px;
+      }
+    }
 
-  &__label{
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    font-size: 16px;
-    color: #a0a0a0;
-    transition: all 0.25s ease;
+    &__wrap{
+      position: relative;
+      width: 500px;
+      margin: 0 auto;
+      padding-bottom: 50px;
+    }
 
-    &.focus{
-      top: -25px;
-      left: 5px;
-      font-size: 14px;
-      color: #fff;
+    &__textbox{
+      position: relative;
+      display: block;
+      width: 500px;
+      margin-top: 50px;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #a0a0a0;
+      outline: none;
+    }
+
+    &__label{
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      font-size: 16px;
+      color: #a0a0a0;
+      transition: all 0.25s ease;
+
+      &.focus{
+        top: -25px;
+        left: 5px;
+        font-size: 14px;
+        color: #fff;
+      }
     }
   }
 }
