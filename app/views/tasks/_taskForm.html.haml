@@ -1,5 +1,20 @@
 -# .form__post__wrap
 -#   = form_with(model: [group, task], local: true, id: "form__task") do |f|
+
+-# .form__box
+-#   .form__box__test
+-#     %h1 Rise
+-#     %h3 I built something similar as an engineer on Identity.com
+-#     %div
+-#       %label{:for => "fname"} First Name
+-#       %input#fname.cool{:type => "text"}/
+-#     %div
+-#       %label{:for => "lname"} Last Name
+-#       %input#lname.cool{:type => "text"}/
+-#     %div
+-#       %label{:for => "email"} Some Long Copy Goes Here
+-#       %input#email.cool{:type => "text"}/
+
 .form__box
   = f.label :title, class: "form__post__label" do
     タイトル
