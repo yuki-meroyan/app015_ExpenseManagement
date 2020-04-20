@@ -25,6 +25,15 @@
   &__header{
     display: flex;
     justify-content: space-between;
+
+    &__comment{
+      position: absolute;
+      width: 100%;
+      z-index: 99;
+      text-align: center;
+      background: $header-back-color;
+      color: $header-font-color;
+    }
   }
   &__link{
     &__text{
