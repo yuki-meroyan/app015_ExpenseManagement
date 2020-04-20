@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :user_signed_check
-  before_action :set_group, except: [:top]
-  before_action :set_task, only: [:edit, :show]
+  before_action :set_group, except: [:top, :update]
+  before_action :set_task, only: [:edit, :show, :update]
 
   def top
     @groups = GroupUser.where(user_id: current_user.id)
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to group_task_path(@task), notice: 'タスク情報を更新しました'
+      redirect_to group_tasks_path(@task.group_id), notice: 'タスク情報を更新しました'
     else
       render :edit
     end
