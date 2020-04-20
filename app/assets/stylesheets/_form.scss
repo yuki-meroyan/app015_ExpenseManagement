@@ -1,5 +1,6 @@
 
 .form{
+
   &__contents{
     display: flex;
     flex-wrap: wrap;
@@ -21,7 +22,7 @@
     -moz-border-radius:6px 6px 0px 0px;
     border-radius:6px 6px 0px 0px;
     background-color:#2ABCA7;
-    color:#FAFAFA;
+    color:$form-font-color;
     a{
       font-size: 0.75rem;
       text-decoration-line: none;
@@ -39,13 +40,62 @@
     }
   }
 
+  &__group{
+
+    input{
+      &__box {
+        margin-bottom:10px;
+      }
+      &__box:first-of-type{
+        margin-top:35px;
+      }
+    }
+    textarea {
+      height:100px;
+      margin-bottom:10px;
+    }
+
+    input, textarea {
+      font-size: 1em;
+      padding: 15px 10px 10px;
+      font-family: 'Source Sans Pro',arial,sans-serif;
+      border: 1px solid $form-line-color;
+      background: $form-back-color;
+      color:$form-font-color;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    ::-webkit-input-placeholder {
+       color: $form-font-color;
+    }
+    :-moz-placeholder {
+       color: $form-font-color;
+    }
+    ::-moz-placeholder {
+       color: $form-font-color;
+    }
+    :-ms-input-placeholder {
+       color: $form-font-color;
+    }
+  }
+
   &__footer{
     margin-top: 15px;
     -webkit-border-radius:6px 6px 6px 6px;
     -moz-border-radius:6px 6px 6px 6px;
     border-radius:6px 6px 6px 6px;
     background-color:#2ABCA7;
-    color:#FAFAFA;
+    color:$form-font-color;
     a{
       font-size: 0.75rem;
       text-decoration-line: none;
@@ -124,7 +174,7 @@
     font-weight: bold;
 
     &__box{
-      
+
     }
 
     &__button{
@@ -144,115 +194,6 @@
       background-color: $button-main-color;
     }
   }
-}
-
-.form__box__test{
-
-  //   font-family: 'Lato', sans-serif;
-  //   color: white;
-  //   background-color: teal;
-
-  // h1 {
-  //   font-size: 60px;
-  //   margin: 0px;
-  //   padding: 0px;
-  // }
-  // h3 {
-  //   margin: 0px;
-  //   padding: 0px;
-  //   color: #999;
-  // }
-
-  // div.wrap {
-  //   width: 500px;
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   vertical-align: middle;
-  // }
-
-  // div.wrap div {
-  //   position: relative;
-  //   margin: 50px 0;
-  // }
-
-  // label {
-  //   position: absolute;
-  //   top: 0;
-  //   font-size: 30px;
-  //   margin: 10px;
-  //   padding: 0 10px;
-  //   background-color: teal;
-  //   -webkit-transition: top .2s ease-in-out,
-  //                       font-size .2s ease-in-out;
-  //   transition: top .2s ease-in-out,
-  //               font-size .2s ease-in-out;
-  // }
-
-  // .active {
-  //   top: -25px;
-  //   font-size: 20px;
-  // }
-
-  // input[type=text] {
-  //   width: 100%;
-  //   padding: 20px;
-  //   border: 1px solid white;
-  //   font-size: 20px;
-  //   background-color: teal;
-  //   color: white;
-  // }
-
-  // input[type=text]:focus {
-  //   outline: none;
-  // }
-}
-
-input{
-  &__box {
-    margin-bottom:10px;
-  }
-  &__box:first-of-type{
-    margin-top:35px;
-  }
-}
-textarea {
-  height:100px;
-  margin-bottom:10px;
-}
-
-input, textarea {
-  font-size: 1em;
-  padding: 15px 10px 10px;
-  font-family: 'Source Sans Pro',arial,sans-serif;
-  border: 1px solid #cecece;
-  background: #d7d7d7;
-  color:#FAFAFA;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 80%;
-  max-width: 600px;
-}
-
-::-webkit-input-placeholder {
-   color: #FAFAFA;
-}
-:-moz-placeholder {
-   color: #FAFAFA;  
-}
-::-moz-placeholder {
-   color: #FAFAFA; 
-}
-:-ms-input-placeholder {
-   color: #FAFAFA;
 }
 
 /* media queries */
@@ -280,14 +221,70 @@ input, textarea {
     background-color: #3cad7e;
     font-family: 'Arial', sans-serif;
 
+    &__wrap{
+      width: 500px;
+      margin: 0 auto;
+      background-color: rgba(255,255,255,0.5);
+    }
+
+    &__box{
+      margin-bottom:10px;
+      font-family: 'Source Sans Pro',arial,sans-serif;
+
+      :first-of-type{
+          padding-top:15px;
+        }
+
+      textarea {
+        height:100px;
+        margin-bottom:10px;
+      }
+    }
+
+    &__label{
+      display: block;
+      color: $link-main-color;
+      padding: 10px 0 10px 30px;
+    }
+
+    &__textbox{
+      font-size: 1em;
+      padding: 15px 10px 10px;
+      border: 1px solid $form-line-color;
+      background: $form-back-color;
+      color:$form-font-color;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 80%;
+      margin: 0 10%;
+      max-width: 100vw;
+      opacity: 0.9;
+    }
+
+    &__selectbox{
+      height: 40px;
+    }
+
     &__button{
       width: 100%;
+      height: 50px;
+      border-radius: 0.25rem;
+      margin: 20px 0 40px 0;
+      line-height: 30px;
+      text-align: center;
+      display: inline-block;
       color: $list-font-color;
       background-color: $button-sub-color;
     }
 
     &__button:hover{
-      width: 100%;
       color: $button-font-color;
       background-color: $table-main-color;
     }
@@ -298,42 +295,6 @@ input, textarea {
         text-transform: uppercase;
         text-align: center;
         font-size: 50px;
-      }
-    }
-
-    &__wrap{
-      position: relative;
-      width: 500px;
-      margin: 0 auto;
-      padding-bottom: 50px;
-    }
-
-    &__textbox{
-      position: relative;
-      display: block;
-      width: 500px;
-      margin-top: 50px;
-      padding: 15px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      color: #a0a0a0;
-      outline: none;
-    }
-
-    &__label{
-      position: absolute;
-      top: 15px;
-      left: 10px;
-      font-size: 16px;
-      color: #a0a0a0;
-      transition: all 0.25s ease;
-
-      &.focus{
-        top: -25px;
-        left: 5px;
-        font-size: 14px;
-        color: #fff;
       }
     }
   }
