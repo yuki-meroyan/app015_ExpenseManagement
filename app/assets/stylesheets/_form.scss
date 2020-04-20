@@ -146,6 +146,7 @@
   }
 
   &__check{
+    display: inline-block;
     margin-left: 3rem;
     height: 20px;
     width: 5%;
@@ -158,6 +159,28 @@
 
   &__box{
     margin: 20px 0 10px;
+    input, textarea {
+      font-size: 1em;
+      padding: 15px 10px 10px;
+      font-family: 'Source Sans Pro',arial,sans-serif;
+      border: 1px solid $form-line-color;
+      background: $form-back-color;
+      color:$form-font-color;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      max-width: 600px;
+    }
+
+    input[type="text"], [type="file"], [type="password"] ,input[type="email"] {
+      width: 80%;
+    }
   }
 
   &__lists{
