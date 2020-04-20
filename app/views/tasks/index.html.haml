@@ -5,36 +5,51 @@
         = link_to new_group_task_path(@group) do
           %h2.form__text  新規タスク作成
 %table.table__content
-  %thead
-    %tr
-      %td{scope: "col"} 依頼日
-      %th{scope: "col"} クライアント
-      %th{scope: "col"} 納期
-      %th{scope: "col"} タイトル
-      %th{scope: "col"}
-      %th{scope: "col"}
-  %tbody
-    - if @tasks
-      - @tasks.each do |task|
-        %tr
-          %th.table__content--link{"data-label" => "依頼日"}
-            = task.request_date
-          %td.table__content--link{"data-label" => "クライアント"}
-            = task.client_name
-          %td.table__content--link{"data-label" => "納期"}
-            = task.delivery_date
-          %td.table__content--link{"data-label" => "タイトル"}
-            = task.title
+  %tr
+    %th タイトル
+    %th クライアント
+    %th 依頼日
+    %th 納期
+    - if @group.master_user == current_user.id
+      %th
+      %th
+  - if @tasks
+    - @tasks.each do |task|
+      %tr
+        %td
+          = task.title
+        %td
+          = task.client_name
+        %td
+          = task.request_date
+        %td
+          = task.delivery_date
+        - if @group.master_user == current_user.id
           %td.table__content--link
             = link_to task_path(task, group_id: task.group_id) do
               詳細
           %td.table__content--link
             = link_to edit_task_path(task, group_id: task.group_id) do
               編集
-    - else
-      %tr
-        %th 未所属
-        %td.table__content--link
+  - else
+    %tr
+      %td
+        未所属
+      %td
+      %td
+      %td
+      %td
+      %td
+      
+      
+      
+      -# %td
+
+        -# %tr
+        -#   %th.table__content--link{"data-label" => "依頼日"}
+        -#   %td.table__content--link{"data-label" => "クライアント"}
+
+    
     
     -#   %td.table__content--price{"data-label" => "価格"} ¥3,000
     -# %tr
