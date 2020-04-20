@@ -3,6 +3,5 @@
     .form__content
       .form__head
         %h2.form__text 新規タスク登録
-.form__post__wrap
-  = form_with(model: [@group, @expense], local: true, id: "form__expense") do |f|
-    = render 'expenseForm', { group: @group, expense: @expense, f: f}
+= form_with(model: [@group, @expense], local: true, id: "form__expense") do |f|
+  = render 'expenseForm', { group: @group, expense: @expense, f: f}
