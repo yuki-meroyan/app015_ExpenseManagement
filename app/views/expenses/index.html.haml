@@ -10,8 +10,8 @@
     %th 内容
     %th 収支
     %th 金額
+    %th
     - if @group.master_user == current_user.id
-      %th
       %th
   - if @expenses
     - @expenses.each do |expense|
@@ -24,10 +24,10 @@
           = expense.request_date
         %td
           = expense.delivery_date
+        %td.table__content--link
+          = link_to expense_path(expense, group_id: expense.group_id) do
+            詳細
         - if @group.master_user == current_user.id
-          %td.table__content--link
-            = link_to expense_path(expense, group_id: expense.group_id) do
-              詳細
           %td.table__content--link
             = link_to edit_expense_path(expense, group_id: expense.group_id) do
               編集
