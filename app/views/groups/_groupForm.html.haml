@@ -22,7 +22,7 @@
         %button.btn.modal__button__close{"data-dismiss" => "modal", :type => "button"} 閉じる
         %button#append__user.btn.modal__button__append{type: "button" } 追加
 
-= form_with(model: group, local: true, id: "form__group") do |f|
+= form_with(model: group, local: true, id: "form__group", class: "form__group") do |f|
   .form__box
     .form__text
       -# = devise_error_messages!

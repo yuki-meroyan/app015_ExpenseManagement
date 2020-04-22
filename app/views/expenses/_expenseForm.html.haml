@@ -1,79 +1,47 @@
 -# .form__post__wrap
 -#   = form_with(model: [group, expense], local: true, id: "form__expense") do |f|
 
-= f.label :order_date, class: "form__post__label" do
-  作成日
-= f.text_field :order_date, class: "form__post__textbox", placeholder: '作成日を入力してください', value: expense.order_date
+.form__post__wrap
+  = f.hidden_field :group_id, class: "form__post__textbox", value: group.id
+  = f.hidden_field :user_id, class: "form__post__textbox", value: current_user.id
+  .form__post__box
+    = f.label :order_date, class: "form__post__label" do
+      作成日
+    = f.text_field :order_date, id: "datepicker__order", class: "form__post__textbox", autocomplete: "off", placeholder: '作成日を選択してください', value: expense.order_date
 
-= f.label :content, class: "form__post__label" do
-  内容
-= f.text_field :content, class: "form__post__textbox", placeholder: '使用用途を入力してください', value: expense.content
+  .form__post__box
+    = f.label :content, class: "form__post__label" do
+      内容
+    = f.text_field :content, class: "form__post__textbox", placeholder: '使用用途を入力してください', value: expense.content
 
-= f.label :income_spend, class: "form__post__label" do
-  収入・支出
-= f.text_field :income_spend, class: "form__post__textbox", placeholder: '収入 or 支出 を入力してください', value: expense.income_spend
+  .form__post__box
+    = f.label :income_spend, class: "form__post__label" do
+      収入・支出
+    = f.select :income_spend, [[ "収入", 1 ], [ "支出", 2 ]], {prompt: "--"},  class: 'form__post__textbox form__post__selectbox'
 
-= f.label :price, class: "form__post__label" do
-  金額
-= f.text_field :price, class: "form__post__textbox", placeholder: '金額を入力してください', value: expense.price
+  .form__post__box
+    = f.label :price, class: "form__post__label" do
+      金額
+    = f.text_field :price, class: "form__post__textbox", placeholder: '金額を入力してください', value: expense.price
 
-= f.label :remarks, class: "form__post__label" do
-  備考・詳細
-= f.text_area :remarks, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: expense.remarks
+  .form__post__box
+    = f.label :remarks, class: "form__post__label" do
+      備考・詳細
+    = f.text_area :remarks, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: expense.remarks
 
-= f.label :request_date, class: "form__post__label" do
-  依頼日
-= f.text_field :request_date, class: "form__post__textbox", placeholder: '依頼日を入力してください', value: expense.request_date
+  .form__post__box
+    = f.label :account_no, class: "form__post__label" do
+      勘定科目
+    = f.collection_select :account_no, Account.all, :no, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
 
-= f.label :receipt_file_name, class: "form__post__label" do
-  領収書ファイル名
-= f.text_field :receipt_file_name, class: "form__post__textbox", placeholder: 'ファイル名を入力してください', value: expense.request_date
+  .form__post__box
+    = f.label :receipt_file_name, class: "form__post__label" do
+      領収書ファイル名
+    = f.text_field :receipt_file_name, class: "form__post__textbox", placeholder: 'ファイル名を入力してください', value: expense.receipt_file_name
 
-= f.label :receipt_file, class: "form__post__label" do
-  領収書ファイル
-= f.file_field :receipt_file, autofocus: false, value: expense.receipt_file
+  .form__post__box
+    = f.label :receipt_file, class: "form__post__label" do
+      領収書ファイル
+    = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file.url
 
-= f.label :account_no, class: "form__post__label" do
-  勘定科目
-= f.text_field :account_no, class: "form__post__textbox", placeholder: '勘定科目番号を入力してください', value: expense.account_no
-
-= f.hidden_field :group_id, class: "form__post__textbox", value: group.id
-= f.hidden_field :user_id, class: "form__post__textbox", value: current_user.id
-
-= f.submit class: "form__post__button"
-
--# = form_with(model: group, local: true) do |f|
--#   .form__content
--#     = f.label :name, class: "form__label"
--#     = f.text_field :name, class: "form__box", placeholder: '  グループ名を入力してください'
--#   .form__content
--#     = f.label :master, class: "form__label"
--#     = current_user.name
--#     = f.text_field :master, value: current_user.id, class: "form__box", hidden: true
--#     = f.text_field :master_name, value: current_user.name, class: "form__box", hidden: true
--#   .form__content
--#     = f.label :detail, class: "form__label"
--#     = f.text_area :detail, class: "form__box", placeholder: '  グループの詳細を入力してください'
--#   .form__content
--#     %label.form__label{for: "chat_group_チャットメンバーを追加"} グループメンバーを追加
--#     %input#search__user__field.form__box{placeholder: "  追加したいユーザー名を入力してください", type: "text"}
--#   .form__content
--#     .form__label
--#     #form__search__result
-
--#   .form__content
--#     .form__label
--#       参加者
--#     #form__group__users
--#       - @group.users.each do |user|
--#         .form__search__result__box
--#           %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: user.id}
--#           = image_tag user.image.url, class: "form__search__image" if user.image.url
--#           .form__search__name
--#             = user.name
--#           - if user.id != current_user.id
--#             #form__remove__button.form__search__button.button
--#               削除
-
--#   .form__content
--#     = f.submit class: "form__button"
+  = f.submit class: "form__post__button"

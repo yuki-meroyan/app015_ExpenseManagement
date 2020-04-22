@@ -17,6 +17,7 @@
     background-repeat: no-repeat;
     background-color: $background-color;
     background-blend-mode: screen;
+    padding-bottom: 70px;
   }
 }
 
@@ -24,6 +25,15 @@
   &__header{
     display: flex;
     justify-content: space-between;
+
+    &__comment{
+      position: absolute;
+      width: 100%;
+      z-index: 99;
+      text-align: center;
+      background: $header-back-color;
+      color: $header-font-color;
+    }
   }
   &__link{
     &__text{
@@ -33,7 +43,10 @@
   &__main{
     &__nav{
       display: flex;
-      font-size: 1.25rem;
+      font-size: 1rem;
+      @include mq(xlarge) {
+        font-size: 1.25rem;
+      }
       text-transform: uppercase;
       margin-top: 34px;
       list-style: none;
@@ -61,7 +74,10 @@
   }
 
   &__title{
-    font-size: 5rem;
+    font-size: 3.5rem;
+    @include mq(xlarge) {
+      font-size: 5rem;
+    }
     font-family: 'Philosopher', serif;
     text-transform: uppercase;
     font-weight: normal;

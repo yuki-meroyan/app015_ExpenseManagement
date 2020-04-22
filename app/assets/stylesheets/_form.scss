@@ -1,5 +1,6 @@
 
 .form{
+
   &__contents{
     display: flex;
     flex-wrap: wrap;
@@ -21,7 +22,7 @@
     -moz-border-radius:6px 6px 0px 0px;
     border-radius:6px 6px 0px 0px;
     background-color:#2ABCA7;
-    color:#FAFAFA;
+    color:$form-font-color;
     a{
       font-size: 0.75rem;
       text-decoration-line: none;
@@ -39,13 +40,62 @@
     }
   }
 
+  &__group{
+
+    input{
+      &__box {
+        margin-bottom:10px;
+      }
+      &__box:first-of-type{
+        margin-top:35px;
+      }
+    }
+    textarea {
+      height:100px;
+      margin-bottom:10px;
+    }
+
+    input, textarea {
+      font-size: 1em;
+      padding: 15px 10px 10px;
+      font-family: 'Source Sans Pro',arial,sans-serif;
+      border: 1px solid $form-line-color;
+      background: $form-back-color;
+      color:$form-font-color;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    ::-webkit-input-placeholder {
+       color: $form-font-color;
+    }
+    :-moz-placeholder {
+       color: $form-font-color;
+    }
+    ::-moz-placeholder {
+       color: $form-font-color;
+    }
+    :-ms-input-placeholder {
+       color: $form-font-color;
+    }
+  }
+
   &__footer{
     margin-top: 15px;
     -webkit-border-radius:6px 6px 6px 6px;
     -moz-border-radius:6px 6px 6px 6px;
     border-radius:6px 6px 6px 6px;
     background-color:#2ABCA7;
-    color:#FAFAFA;
+    color:$form-font-color;
     a{
       font-size: 0.75rem;
       text-decoration-line: none;
@@ -96,6 +146,7 @@
   }
 
   &__check{
+    display: inline-block;
     margin-left: 3rem;
     height: 20px;
     width: 5%;
@@ -108,6 +159,28 @@
 
   &__box{
     margin: 20px 0 10px;
+    input, textarea {
+      font-size: 1em;
+      padding: 15px 10px 10px;
+      font-family: 'Source Sans Pro',arial,sans-serif;
+      border: 1px solid $form-line-color;
+      background: $form-back-color;
+      color:$form-font-color;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      max-width: 600px;
+    }
+
+    input[type="text"], [type="file"], [type="password"] ,input[type="email"] {
+      width: 80%;
+    }
   }
 
   &__lists{
@@ -124,7 +197,7 @@
     font-weight: bold;
 
     &__box{
-      
+
     }
 
     &__button{
@@ -146,53 +219,6 @@
   }
 }
 
-
-input{
-  &__box {
-    margin-bottom:10px;
-  }
-  &__box:first-of-type{
-    margin-top:35px;
-  }
-}
-textarea {
-  height:100px;
-  margin-bottom:10px;
-}
-
-input, textarea {
-  font-size: 1em;
-  padding: 15px 10px 10px;
-  font-family: 'Source Sans Pro',arial,sans-serif;
-  border: 1px solid #cecece;
-  background: #d7d7d7;
-  color:#FAFAFA;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 80%;
-  max-width: 600px;
-}
-
-::-webkit-input-placeholder {
-   color: #FAFAFA;
-}
-:-moz-placeholder {
-   color: #FAFAFA;  
-}
-::-moz-placeholder {
-   color: #FAFAFA; 
-}
-:-ms-input-placeholder {
-   color: #FAFAFA;
-}
-
 /* media queries */
 @media (max-width: 700px) {
 
@@ -206,58 +232,93 @@ input, textarea {
 }
 
 //  投稿用フォーム  //
-.form__post{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background-color: #3cad7e;
-  font-family: 'Arial', sans-serif;
+.form {
 
-  &__container{
-    h1{
-      color: #fff;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 50px;
+  &__post{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #3cad7e;
+    font-family: 'Arial', sans-serif;
+
+    &__wrap{
+      width: 500px;
+      margin: 0 auto;
+      background-color: rgba(255,255,255,0.5);
     }
-  }
 
-  &__wrap{
-    position: relative;
-    width: 500px;
-    height: 100px;
-    margin: 0 auto;
-  }
+    &__box{
+      margin-bottom:10px;
+      font-family: 'Source Sans Pro',arial,sans-serif;
 
-  &__textbox{
-    position: relative;
-    display: block;
-    width: 500px;
-    margin-top: 50px;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #a0a0a0;
-    outline: none;
-  }
+      :first-of-type{
+          padding-top:15px;
+        }
 
-  &__label{
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    font-size: 16px;
-    color: #a0a0a0;
-    transition: all 0.25s ease;
+      textarea {
+        height:100px;
+        margin-bottom:10px;
+      }
+    }
 
-    &.focus{
-      top: -25px;
-      left: 5px;
-      font-size: 14px;
-      color: #fff;
+    &__label{
+      display: block;
+      color: $link-main-color;
+      padding: 10px 0 10px 30px;
+    }
+
+    &__textbox{
+      font-size: 1em;
+      padding: 15px 10px 10px;
+      border: 1px solid $form-line-color;
+      background: $form-back-color;
+      color:$form-font-color;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 80%;
+      margin: 0 10%;
+      max-width: 100vw;
+      opacity: 0.9;
+    }
+
+    &__selectbox{
+      height: 40px;
+    }
+
+    &__button{
+      width: 100%;
+      height: 50px;
+      border-radius: 0.25rem;
+      margin-top: 20px;
+      line-height: 30px;
+      text-align: center;
+      display: inline-block;
+      color: $list-font-color;
+      background-color: $button-sub-color;
+    }
+
+    &__button:hover{
+      color: $button-font-color;
+      background-color: $table-main-color;
+    }
+
+    &__container{
+      h1{
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 50px;
+      }
     }
   }
 }
