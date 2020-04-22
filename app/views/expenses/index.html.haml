@@ -17,13 +17,13 @@
     - @expenses.each do |expense|
       %tr
         %td
-          = expense.title
+          = expense.order_date
         %td
-          = expense.client_name
+          = expense.content
         %td
-          = expense.request_date
+          = expense.income_spend
         %td
-          = expense.delivery_date
+          = expense.price
         %td.table__content--link
           = link_to expense_path(expense, group_id: expense.group_id) do
             詳細
