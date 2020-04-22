@@ -10,8 +10,8 @@
     %th クライアント
     %th 依頼日
     %th 納期
+    %th
     - if @group.master_user == current_user.id
-      %th
       %th
   - if @tasks
     - @tasks.each do |task|
@@ -24,10 +24,10 @@
           = task.request_date
         %td
           = task.delivery_date
+        %td.table__content--link
+          = link_to task_path(task, group_id: task.group_id) do
+            詳細
         - if @group.master_user == current_user.id
-          %td.table__content--link
-            = link_to task_path(task, group_id: task.group_id) do
-              詳細
           %td.table__content--link
             = link_to edit_task_path(task, group_id: task.group_id) do
               編集
