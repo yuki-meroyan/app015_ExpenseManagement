@@ -42,6 +42,6 @@
   .form__post__box
     = f.label :receipt_file, class: "form__post__label" do
       領収書ファイル
-    = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file
+    = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file.url
 
   = f.submit class: "form__post__button"
