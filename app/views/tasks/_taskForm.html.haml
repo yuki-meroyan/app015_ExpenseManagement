@@ -1,21 +1,5 @@
--# .form__post__wrap
--#   = form_with(model: [group, task], local: true, id: "form__task") do |f|
-
--# .form__box
--#   .form__box__test
--#     %h1 Rise
--#     %h3 I built something similar as an engineer on Identity.com
--#     %div
--#       %label{:for => "fname"} First Name
--#       %input#fname.cool{:type => "text"}/
--#     %div
--#       %label{:for => "lname"} Last Name
--#       %input#lname.cool{:type => "text"}/
--#     %div
--#       %label{:for => "email"} Some Long Copy Goes Here
--#       %input#email.cool{:type => "text"}/
-
 .form__post__wrap
+  = f.hidden_field :group_id, class: "form__post__textbox", value: group.id
   .form__post__box
     = f.label :title, class: "form__post__label" do
       タイトル
@@ -45,9 +29,6 @@
     = f.label :delivery_date, class: "form__post__label" do
       納期
     = f.text_field :delivery_date, id: "datepicker__delivery", class: "form__post__textbox", autocomplete: "off", placeholder: '納期を選択してください', value: task.delivery_date
-
-  .form__post__box
-    = f.hidden_field :group_id, class: "form__post__textbox", value: group.id
 
   = f.submit class: "form__post__button"
 
