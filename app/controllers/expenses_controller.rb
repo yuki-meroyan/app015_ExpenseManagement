@@ -21,6 +21,10 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
+    @expense[:year] = @expense[:order_date].strftime("%Y")
+    @expense[:month] = @expense[:order_date].strftime("%m")
+    @expense[:day] = @expense[:order_date].strftime("%d")
+    binding.pry
     if @expense.save
       redirect_to group_expenses_path(@group)
     else
@@ -42,7 +46,8 @@ class ExpensesController < ApplicationController
 
   private
   def expense_params
-    params.require(:expense).permit(:order_date, :year, :month, :day, :content, :income_spend, :price, :remarks, :receipt_file_name, :receipt_file, :account_no, :group_id, :user_id)
+    # params.require(:expense).permit(:order_date, :content, :income_spend, :price, :remarks, :receipt_file_name, :receipt_file, :account_no, :group_id, :user_id)
+    params.require(:expense).permit(:order_date, :content, :income_spend, :price, :remarks, :receipt_file_name, :account_no, :group_id, receipt_files_attributes:[:id]).merge(user_id: current_user.id)
   end
 
   def set_group
