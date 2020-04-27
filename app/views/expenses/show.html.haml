@@ -1,0 +1,54 @@
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        = link_to edit_expense_path(@expense, group_id: @expense.group_id) do
+          %h2.form__text  編集する
+%table{:class => "table__show"}
+  %tbody
+    %tr
+      %th 依頼日
+      %td
+        = @expense.order_date
+    %tr
+      %th 依頼内容
+      %td
+        = @expense.content
+    %tr
+      %th 金額
+      %td
+        - case @expense.income_spend
+          - when 1
+            収入
+          - when 2
+            支出
+          - else
+            未分類
+    %tr
+      %th 金額
+      %td
+        = @expense.price
+    %tr
+      %th 備考・詳細
+      %td
+        = @expense.remarks
+    %tr
+      %th ファイル名
+      %td
+        = @expense.receipt_file_name
+    %tr
+      %th 領収書ファイル
+      %td
+        = @expense.receipt_file
+    %tr
+      %th 勘定科目
+      %td
+        = @expense.account_no
+    %tr
+      %th グループ
+      %td
+        = @expense.group.name
+    %tr
+      %th 作成者
+      %td
+        = @expense.user.nick_name
