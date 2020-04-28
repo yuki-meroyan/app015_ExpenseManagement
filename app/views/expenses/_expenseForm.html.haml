@@ -22,7 +22,7 @@
   .form__post__box
     = f.label :price, class: "form__post__label" do
       金額
-    = f.text_field :price, class: "form__post__textbox", placeholder: '金額を入力してください', value: expense.price
+    = f.text_field :price, class: "form__post__textbox", placeholder: '金額を入力してください', value: expense.price.to_s(:delimited)
 
   .form__post__box
     = f.label :remarks, class: "form__post__label" do
@@ -32,7 +32,7 @@
   .form__post__box
     = f.label :account_id, class: "form__post__label" do
       勘定科目
-    = f.collection_select :account_id, Account.all, :no, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
+    = f.collection_select :account_id, Account.all, :id, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
 
   .form__post__box
     = f.label :receipt_file_name, class: "form__post__label" do
@@ -42,6 +42,6 @@
   .form__post__box
     = f.label :receipt_file, class: "form__post__label" do
       領収書ファイル
-    = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file.url
+    = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file.file.file
 
   = f.submit class: "form__post__button"
