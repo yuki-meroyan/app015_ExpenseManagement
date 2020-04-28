@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_145112) do
     t.text "remarks"
     t.string "receipt_file_name"
     t.string "receipt_file"
-    t.integer "account_no", null: false
+    t.integer "account_id", null: false
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

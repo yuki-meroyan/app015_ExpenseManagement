@@ -11,7 +11,7 @@ class CreateExpenses < ActiveRecord::Migration[5.2]
       t.text        :remarks
       t.string      :receipt_file_name
       t.string      :receipt_file
-      t.integer     :account_no   , null: false
+      t.integer     :account_id   , null: false
       t.references  :group        , null: false, foreign_key: true
       t.references  :user         , null: false, foreign_key: true
       t.timestamps

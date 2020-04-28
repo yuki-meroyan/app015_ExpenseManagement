@@ -56,7 +56,7 @@
 |remarks|text|
 |receipt_file_name|string|
 |receipt_file|string|mount_uploader: exceipt|
-|account_no|integer|null: false|
+|account_id|integer|null: false|
 |group_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 ### Association
@@ -66,7 +66,7 @@
 ### Active_hash(income_spend)
 - 0:借方
 - 1:貸方
-### Active_hash(account_no)
+### Active_hash(account_id)
 - 勘定科目(項目分け)
 
 ## receipt_files

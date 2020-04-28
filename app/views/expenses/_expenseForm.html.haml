@@ -30,9 +30,9 @@
     = f.text_area :remarks, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: expense.remarks
 
   .form__post__box
-    = f.label :account_no, class: "form__post__label" do
+    = f.label :account_id, class: "form__post__label" do
       勘定科目
-    = f.collection_select :account_no, Account.all, :no, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
+    = f.collection_select :account_id, Account.all, :no, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
 
   .form__post__box
     = f.label :receipt_file_name, class: "form__post__label" do
