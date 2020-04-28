@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :user_signed_check
-  before_action :set_group, except: [:top, :update]
-  before_action :set_expense, only: [:edit, :show, :update]
+  before_action :set_group, except: [:top, :update, :download]
+  before_action :set_expense, only: [:edit, :show, :update, :download]
 
   def top
     @groups = GroupUser.where(user_id: current_user.id)
@@ -43,10 +43,17 @@ class ExpensesController < ApplicationController
 
   end
 
+  def download
+    file_name = @expense.receipt_file.identifier
+    file_path = Rails.root.join('public', @expense.receipt_file.file.file)
+    stat = File::stat(file_path)
+    send_file(file_path, filename: file_name, length: stat.size)
+  end
+
   private
   def expense_params
-    params.require(:expense).permit(:order_date, :content, :income_spend, :price, :remarks, :receipt_file_name, :receipt_file, :account_no, :group_id).merge(user_id: current_user.id)
-    # params.require(:expense).permit(:order_date, :content, :income_spend, :price, :remarks, :receipt_file_name, :account_no, :group_id, receipt_files_attributes:[:id]).merge(user_id: current_user.id)
+    params.require(:expense).permit(:order_date, :content, :income_spend, :price, :remarks, :receipt_file_name, :receipt_file, :account_id, :group_id).merge(user_id: current_user.id)
+    # params.require(:expense).permit(:order_date, :content, :income_spend, :price, :remarks, :receipt_file_name, :account_id, :group_id, receipt_files_attributes:[:id]).merge(user_id: current_user.id)
   end
 
   def set_group
