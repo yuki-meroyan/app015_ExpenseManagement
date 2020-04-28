@@ -1,0 +1,36 @@
+.form__contents
+  .col-lg-4.col-md-6.ml-auto.mr-auto
+    .form__content
+      .form__head
+        = link_to edit_task_path(@task, group_id: @task.group_id) do
+          %h2.form__text  編集する
+%table{:class => "table__show"}
+  %tbody
+    %tr
+      %th タイトル
+      %td
+        = @task.title
+    %tr
+      %th クライアント担当者名
+      %td
+        = @task.client_user
+    %tr
+      %th クライアント企業名
+      %td
+        = @task.client_name
+    %tr
+      %th 備考・詳細
+      %td
+        = @task.detail
+    %tr
+      %th 依頼日
+      %td
+        = @task.request_date
+    %tr
+      %th 納期
+      %td
+        = @task.delivery_date
+    %tr
+      %th グループ
+      %td
+        = @task.group_id
