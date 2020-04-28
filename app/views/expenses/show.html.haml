@@ -27,23 +27,20 @@
     %tr
       %th 金額
       %td
-        = @expense.price
+        = "¥" + @expense.price.to_s(:delimited) + " ー "
     %tr
       %th 備考・詳細
       %td
         = @expense.remarks
-    %tr
-      %th ファイル名
-      %td
-        = @expense.receipt_file_name
-    %tr
-      %th 領収書ファイル
-      %td
-        = @expense.receipt_file
+    - if @expense.receipt_file.present?
+      %tr
+        %th 領収書ファイル
+        %td
+          = link_to @expense.receipt_file_name, "/expenses/download/#{@expense.id}", download: "#{@expense.receipt_file}"
     %tr
       %th 勘定科目
       %td
-        = @expense.account_no
+        = @expense.account[:name]
     %tr
       %th グループ
       %td
