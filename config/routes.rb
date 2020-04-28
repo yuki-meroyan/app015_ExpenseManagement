@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/tasks/top', to: 'tasks#top'
   get '/expenses/top', to: 'expenses#top'
+  get '/expenses/download/:id' => 'expenses#download'
   resources :groups, shallow: true do
     resources :tasks, except: [:top]
     resources :expenses, except: [:top]
