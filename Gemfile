@@ -76,4 +76,3 @@ gem 'twitter-bootstrap-rails'
 gem 'active_hash'
 gem "jquery-rails"
 gem 'jquery-ui-rails'
-gem 'bcrypt'
