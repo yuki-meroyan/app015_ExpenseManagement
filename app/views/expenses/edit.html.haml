@@ -2,6 +2,6 @@
   .col-lg-4.col-md-6.ml-auto.mr-auto
     .form__content
       .form__head
-        %h2.form__text グループ編集
+        %h2.form__text 経費編集画面
 = form_with(model: @expense, local: true, id: "form__expense") do |f|
-  = render 'expenseForm', { group: @group, expense: @expense, f: f}
+  = render 'expenseForm', { group: @group, expense: @expense, f: f, newEdit: "EDIT" }

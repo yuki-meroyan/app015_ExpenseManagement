@@ -37,7 +37,8 @@ class GroupsController < ApplicationController
   protected
 
   def group_params
-    params.require(:group).permit(:name, :master_user, :password, :icon, { user_ids: [] } )
+    # params.require(:group).permit(:name, :master_user, :password, :password_confirmation, :icon, { user_ids: [] } )
+    params.require(:group).permit(:name, :master_user, :icon, { user_ids: [] } )
   end
 
   def set_group

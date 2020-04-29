@@ -30,9 +30,9 @@
     = f.text_area :remarks, class: "form__post__textbox", placeholder: '備考や詳細を入力してください', value: expense.remarks
 
   .form__post__box
-    = f.label :account_no, class: "form__post__label" do
+    = f.label :account_id, class: "form__post__label" do
       勘定科目
-    = f.collection_select :account_no, Account.all, :no, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
+    = f.collection_select :account_id, Account.all, :id, :name, {prompt: "--"}, class: "form__post__textbox form__post__selectbox"
 
   .form__post__box
     = f.label :receipt_file_name, class: "form__post__label" do
@@ -41,7 +41,11 @@
 
   .form__post__box
     = f.label :receipt_file, class: "form__post__label" do
-      領収書ファイル
-    = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file.url
+      - if newEdit == "NEW"
+        領収書ファイル
+      - else
+        領収書ファイル ※変更がある場合のみ選択してください
+    = f.file_field :receipt_file, class: "form__post__textbox"
+    -# = f.file_field :receipt_file, class: "form__post__textbox", autofocus: false, value: expense.receipt_file.file.file
 
   = f.submit class: "form__post__button"

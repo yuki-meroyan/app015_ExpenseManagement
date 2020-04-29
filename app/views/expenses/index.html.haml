@@ -21,7 +21,13 @@
         %td
           = expense.content
         %td
-          = expense.income_spend
+          - case expense.income_spend
+            - when 1
+              収入
+            - when 2
+              支出
+            - else
+              未分類
         %td
           = expense.price
         %td.table__content--link

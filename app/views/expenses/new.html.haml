@@ -4,4 +4,4 @@
       .form__head
         %h2.form__text 新規タスク登録
 = form_with(model: [@group, @expense], local: true, id: "form__expense") do |f|
-  = render 'expenseForm', { group: @group, expense: @expense, f: f}
+  = render 'expenseForm', { group: @group, expense: @expense, f: f, newEdit: "NEW" }

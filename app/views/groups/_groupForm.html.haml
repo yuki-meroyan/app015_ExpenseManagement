@@ -28,13 +28,15 @@
       -# = devise_error_messages!
   .form__box
     = f.text_field :name, autofocus: false, placeholder: 'グループ名', value: group.name
-  .form__box
-    = f.password_field :password, autofocus: false, placeholder: '管理用パスワード', value: group.password
-  .form__box
-    = f.file_field :icon, autofocus: false, value: group.icon
+  -# .form__box
+  -#   = f.password_field :password, placeholder: '管理用パスワード'
+  -# .form__box
+  -#   = f.password_field :password_confirmation, placeholder: '管理用パスワード(確認)'
+  -# .form__box
+  -#   = f.file_field :icon, autofocus: false, value: group.icon
     -# = f.hidden_field :group[user_ids][], id: "group_user_ids", value: current_user.id
-    %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: current_user.id}
-    = f.hidden_field :master_user, autofocus: false, value: current_user.id
+  = f.hidden_field :master_user, autofocus: false, value: current_user.id
+  %input{id: "group_user_ids", name: "group[user_ids][]", type: "hidden", value: current_user.id}
   .form__box
     管理者：
     = current_user.nick_name

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_145112) do
     t.text "remarks"
     t.string "receipt_file_name"
     t.string "receipt_file"
-    t.integer "account_no", null: false
+    t.integer "account_id", null: false
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_145112) do
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "password", null: false
     t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
