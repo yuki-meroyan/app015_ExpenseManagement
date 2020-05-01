@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :user_signed_check
-  before_action :set_group        , only: [:show, :edit, :update]
+  before_action :set_group        , only: [:show, :edit, :update, :destroy]
 
   def index
     @groups = GroupUser.where(user_id: current_user.id)
@@ -19,10 +19,14 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    if @group.save
-      redirect_to groups_path, notice: 'グループを作成しました'
+    if @group.name.blank?
+      redirect_to new_group_path, notice: 'グループ名を入力してください'
     else
-      render :new
+      if @group.save
+        redirect_to groups_path, notice: 'グループを作成しました'
+      else
+        redirect_to new_group_path, notice: 'グループの作成に失敗しました'
+      end
     end
   end
 
@@ -31,6 +35,15 @@ class GroupsController < ApplicationController
       redirect_to groups_path, notice: 'グループ情報を更新しました'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @group.destroy if @group.master_user == current_user.id
+    if @group.destroy
+      redirect_to groups_path
+    else
+      render edit_group_path(@group), notice: '削除に失敗しました'
     end
   end
 
