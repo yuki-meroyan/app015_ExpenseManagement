@@ -21,13 +21,19 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
-    @expense[:year] = @expense[:order_date].strftime("%Y")
-    @expense[:month] = @expense[:order_date].strftime("%m")
-    @expense[:day] = @expense[:order_date].strftime("%d")
-    if @expense.save
-      redirect_to group_expenses_path(@group)
+    check_text = check_params(@expense)
+    if check_text.blank?
+      @expense[:year] = @expense[:order_date].strftime("%Y")
+      @expense[:month] = @expense[:order_date].strftime("%m")
+      @expense[:day] = @expense[:order_date].strftime("%d")
+      if @expense.save
+        redirect_to group_expenses_path(@group)
+      else
+        render :new, notice: '経費の作成に失敗しました'
+      end
     else
-      render :index
+      flash.now[:alert] = check_text
+      render :new
     end
   end
 
@@ -63,4 +69,16 @@ class ExpensesController < ApplicationController
   def set_expense
     @expense = Expense.find(params[:id])
   end
+
+  def check_params(expense)
+    text = nil
+    expense.order_date.blank? ? text = "#{text}[作成日]" : ""
+    expense.content.blank? ? text = "#{text}[内容]" : ""
+    expense.income_spend.blank? ? text = "#{text}[収入・支出]" : ""
+    expense.price.blank? ? text = "#{text}[金額]" : ""
+    expense.account_id.blank? ? text = "#{text}[勘定科目]" : ""
+    text != nil ? text = "#{text}を入力してください" : ""
+    return text
+  end
+
 end
