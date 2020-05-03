@@ -27,12 +27,18 @@
     justify-content: space-between;
 
     &__comment{
-      position: absolute;
       width: 100%;
       z-index: 99;
       text-align: center;
       background: $header-back-color;
       color: $header-font-color;
+    }
+
+    &__message{
+      position: relative;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
     }
   }
   &__link{
