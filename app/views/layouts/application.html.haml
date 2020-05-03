@@ -12,11 +12,11 @@
   %body
     - if notice
       .page__header__comment
-        %p.notice
+        %p.page__header__message
           = notice
     - elsif alert
       .page__header__comment
-        %p.alert
+        %p.page__header__message
           = alert
     #home.home__large-background
       %header.page__header.wrapper
