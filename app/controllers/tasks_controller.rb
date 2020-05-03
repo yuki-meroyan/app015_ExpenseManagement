@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     check_text = check_params(@task)
     if check_text.blank?
       if @task.save
-        redirect_to group_tasks_path(@group)
+        redirect_to group_tasks_path(@group), notice: 'タスクを作成しました'
       else
         render :new, notice: 'タスクの作成に失敗しました'
       end
