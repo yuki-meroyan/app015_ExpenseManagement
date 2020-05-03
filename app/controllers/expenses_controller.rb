@@ -27,9 +27,9 @@ class ExpensesController < ApplicationController
       @expense[:month] = @expense[:order_date].strftime("%m")
       @expense[:day] = @expense[:order_date].strftime("%d")
       if @expense.save
-        redirect_to group_expenses_path(@group)
+        redirect_to group_expenses_path(@group), notice: '経費を登録しました'
       else
-        render :new, notice: '経費の作成に失敗しました'
+        render :new, notice: '経費の登録に失敗しました'
       end
     else
       flash.now[:alert] = check_text
