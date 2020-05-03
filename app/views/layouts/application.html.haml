@@ -24,11 +24,11 @@
           -# = image_tag '', :alt => 'ロゴ'
         %nav
           %ul.page__main__nav
-            %li
-              = link_to root_path, class: "page__link" do
-                トップ
             -# ユーザー登録が済んでいる
             - if current_user.present?
+              %li
+                = link_to root_path, class: "page__link" do
+                  トップ
               %li
                 = link_to groups_path, class: "page__link" do
                   %h3.page__link__text
