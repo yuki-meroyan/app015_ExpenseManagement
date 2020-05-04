@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :user_signed_check
+  before_action :group_belongs_check
   before_action :set_group, except: [:top, :update]
   before_action :set_task, only: [:edit, :show, :update]
 
@@ -53,7 +54,11 @@ class TasksController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:group_id])
+    if params[:group_id].blank?
+      redirect_to groups_path
+    else
+      @group = Group.find(params[:group_id])
+    end
   end
 
   def set_task

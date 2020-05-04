@@ -55,7 +55,11 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:id])
+    if params[:group_id].blank?
+      redirect_to groups_path
+    else
+      @group = Group.find(params[:id])
+    end
   end
 
 end

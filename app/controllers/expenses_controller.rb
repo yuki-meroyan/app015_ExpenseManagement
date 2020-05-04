@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :user_signed_check
+  before_action :group_belongs_check
   before_action :set_group, except: [:top, :update, :download]
   before_action :set_expense, only: [:edit, :show, :update, :download]
 
@@ -63,7 +64,11 @@ class ExpensesController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:group_id])
+    if params[:group_id].blank?
+      redirect_to groups_path
+    else
+      @group = Group.find(params[:group_id])
+    end
   end
 
   def set_expense
