@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def group_belongs_check
-    group = GroupUser.where(user_id: current_user.id, group_id: params[:group_id])
+    group = GroupUser.where(user_id: current_user.id)
     if group.blank?
       redirect_to new_group_path
     end
