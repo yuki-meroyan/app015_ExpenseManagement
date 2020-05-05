@@ -50,7 +50,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title, :client_user, :client_name, :detail, :request_date, :delivery_date, :group_id)
+    params.require(:task).permit(:title, :client_user, :client_name, :detail, :request_date, :delivery_date, :status, :group_id)
   end
 
   def set_group
