@@ -8,7 +8,7 @@
   %tr
     %th タイトル
     %th クライアント
-    %th 依頼日
+    %th 進捗状況
     %th 納期
     %th
     - if @group.master_user == current_user.id
@@ -21,7 +21,21 @@
         %td
           = task.client_name
         %td
-          = task.request_date
+          - case task.status
+            - when 1
+              未着手
+            - when 2
+              要件整理
+            - when 3
+              作成中
+            - when 4
+              確認待
+            - when 5
+              完了
+            - when 9
+              取消・キャンセル
+            - else
+              未分類
         %td
           = task.delivery_date
         %td.table__content--link
