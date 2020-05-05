@@ -4,4 +4,4 @@
       .form__head
         %h2.form__text タスク編集画面
 = form_with(model: @task, local: true, id: "form__task") do |f|
-  = render 'taskForm', { group: @group, task: @task, f: f}
+  = render 'taskForm', { group: @group, task: @task, f: f, newEdit: "EDIT" }

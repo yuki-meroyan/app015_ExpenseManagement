@@ -44,7 +44,7 @@ end
                  detail: detail,
                  request_date: request_date,
                  delivery_date: delivery_date,
-                 status: 0,
+                 status: 1,
                  group_id: groupID
                 )
   end

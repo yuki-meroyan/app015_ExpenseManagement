@@ -31,6 +31,24 @@
       %td
         = @task.delivery_date
     %tr
+      %th 進捗状況
+      %td
+        - case @task.status
+          - when 1
+            未着手
+          - when 2
+            要件整理
+          - when 3
+            作成中
+          - when 4
+            確認待
+          - when 5
+            完了
+          - when 9
+            取消・キャンセル
+          - else
+            未分類
+    %tr
       %th グループ
       %td
         = @task.group_id
