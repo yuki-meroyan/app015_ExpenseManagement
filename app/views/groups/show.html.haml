@@ -10,8 +10,15 @@
             %li.form__list
               = group_user.nick_name
         .form__footer
-          = link_to edit_group_path(@group.id) do
-            %h2.form__text 編集（追加・削除）
+          -if @group.master_user == current_user.id
+            = link_to edit_group_path(@group.id) do
+              %h2.form__text 編集（追加・削除）
+        .form__footer
+          = link_to group_tasks_path(@group.id) do
+            %h2.form__text タスク確認
+        .form__footer
+          = link_to group_expenses_path(@group.id) do
+            %h2.form__text 経費確認
         .form__footer
           = link_to groups_path do
             %h2.form__text グループトップ

@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :user_signed_check
+  before_action :group_belongs_check
   before_action :set_group, except: [:top, :update, :download]
   before_action :set_expense, only: [:edit, :show, :update, :download]
 
@@ -21,13 +22,19 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
-    @expense[:year] = @expense[:order_date].strftime("%Y")
-    @expense[:month] = @expense[:order_date].strftime("%m")
-    @expense[:day] = @expense[:order_date].strftime("%d")
-    if @expense.save
-      redirect_to group_expenses_path(@group)
+    check_text = check_params(@expense)
+    if check_text.blank?
+      @expense[:year] = @expense[:order_date].strftime("%Y")
+      @expense[:month] = @expense[:order_date].strftime("%m")
+      @expense[:day] = @expense[:order_date].strftime("%d")
+      if @expense.save
+        redirect_to group_expenses_path(@group), notice: '経費を登録しました'
+      else
+        render :new, notice: '経費の登録に失敗しました'
+      end
     else
-      render :index
+      flash.now[:alert] = check_text
+      render :new
     end
   end
 
@@ -57,10 +64,26 @@ class ExpensesController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:group_id])
+    if params[:group_id].blank?
+      redirect_to groups_path
+    else
+      @group = Group.find(params[:group_id])
+    end
   end
 
   def set_expense
     @expense = Expense.find(params[:id])
   end
+
+  def check_params(expense)
+    text = nil
+    expense.order_date.blank? ? text = "#{text}[作成日]" : ""
+    expense.content.blank? ? text = "#{text}[内容]" : ""
+    expense.income_spend.blank? ? text = "#{text}[収入・支出]" : ""
+    expense.price.blank? ? text = "#{text}[金額]" : ""
+    expense.account_id.blank? ? text = "#{text}[勘定科目]" : ""
+    text != nil ? text = "#{text}を入力してください" : ""
+    return text
+  end
+
 end

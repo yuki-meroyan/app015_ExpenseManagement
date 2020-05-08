@@ -30,6 +30,12 @@
       納期
     = f.text_field :delivery_date, id: "datepicker__delivery", class: "form__post__textbox", autocomplete: "off", placeholder: '納期を選択してください', value: task.delivery_date
 
+  - if newEdit == "EDIT"
+    .form__post__box
+    = f.label :status, class: "form__post__label" do
+      進捗状況
+    = f.select :status, [[ "未着手", 1 ], [ "要件整理", 2 ], [ "作成中", 3 ], [ "確認待", 4 ], [ "完了", 5 ], [ "取消・キャンセル", 9 ]], {prompt: 1},  class: 'form__post__textbox form__post__selectbox'
+
   = f.submit class: "form__post__button"
 
 -# = form_with(model: group, local: true) do |f|

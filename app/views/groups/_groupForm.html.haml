@@ -56,6 +56,11 @@
       ユーザーを追加する
   .form__box
     = f.submit buttonName, class: "form__button"
+  - if edit_flg == 1
+    .form__box
+    = link_to group_path(@group.id), method: :delete, data: { confirm: 'グループを削除するとタスクや経費も削除されますがよろしいですか？' } do
+      .form__button
+        このグループを削除する
 .form__footer
   = link_to groups_path do
     %h2.form__text グループトップ

@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title App015Expensemanagement
+    %title ManagementToRemember
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
@@ -12,11 +12,11 @@
   %body
     - if notice
       .page__header__comment
-        %p.notice
+        %p.page__header__message
           = notice
     - elsif alert
       .page__header__comment
-        %p.alert
+        %p.page__header__message
           = alert
     #home.home__large-background
       %header.page__header.wrapper
@@ -24,11 +24,11 @@
           -# = image_tag '', :alt => 'ロゴ'
         %nav
           %ul.page__main__nav
-            %li
-              = link_to root_path, class: "page__link" do
-                トップ
             -# ユーザー登録が済んでいる
             - if current_user.present?
+              %li
+                = link_to root_path, class: "page__link" do
+                  トップ
               %li
                 = link_to groups_path, class: "page__link" do
                   %h3.page__link__text
