@@ -47,7 +47,7 @@
           .form__list__box
             - if @group.master_user != group_user.id
               %li.form__list
-                %input#group_user_ids{name: "group[user_ids][]", type: "hidden", value: group_user.id}
+                %input{name: "group[user_ids][]", type: "hidden", value: group_user.id}
                 = group_user.nick_name
               - if @group.master_user == current_user.id
                 .form__list__button
