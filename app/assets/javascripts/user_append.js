@@ -22,7 +22,7 @@ $(function() {
   function appendGroup(id,name,mail){
     var html = `<div class="form__list__box">
                   <li class="form__list">
-                    <input id="group_user_ids" name="group[user_ids][]" type="hidden" value="${id}">
+                    <input name="group[user_ids][]" type="hidden" value="${id}">
                       ${name}
                   </li>
                   <div class="form__list__button">
