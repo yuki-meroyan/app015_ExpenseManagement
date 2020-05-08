@@ -47,8 +47,14 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: app015_ExpenseManagement_production
+#   username: app015_ExpenseManagement
+#   password: <%= ENV['APP015_EXPENSEMANAGEMENT_DATABASE_PASSWORD'] %>
 production:
+#半角スペース２個分の空白を開ける
   <<: *default
-  database: app015_ExpenseManagement_production
-  username: app015_ExpenseManagement
-  password: <%= ENV['APP015_EXPENSEMANAGEMENT_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
