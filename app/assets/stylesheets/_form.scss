@@ -8,7 +8,8 @@
   }
 
   &__content{
-    max-width:600px;
+    max-width:500px;
+    min-width:400px;
     margin:0 auto;
     text-align:center;
     -webkit-border-radius:6px;
@@ -195,9 +196,13 @@
     display: inline-block;
     width: 300px;
     text-align: left;
-    margin: 10px 0;
     color: $list-font-color;
-    font-size: 1.5rem;
+    @include mq(xlarge) {
+      margin: 10px 0;
+      font-size: 1.5rem;
+    }
+    padding: 5px 0;
+    font-size: 1rem;
     font-weight: bold;
 
     &__box{
