@@ -58,7 +58,10 @@
       list-style: none;
     }
     &__nav li{
-      margin-left: 36px;
+      @include mq(xlarge) {
+        margin-left: 40px;
+      }
+      margin-left: 30px;
     }
     &__nav a{
       color: $link-main-color;
