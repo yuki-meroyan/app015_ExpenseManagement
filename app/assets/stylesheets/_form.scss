@@ -41,7 +41,10 @@
     h2 {
       text-align:center;
       padding:18px 0 18px 0;
-      font-size: 1.4em;
+      @include mq(xlarge) {
+        font-size: 1.4em;
+      }
+      font-size: 1rem;
     }
   }
 
@@ -163,7 +166,9 @@
   }
 
   &__box{
-    margin: 20px 0 10px;
+    @include mq(xlarge) {
+      margin: 20px 0 10px;
+    }
     input, textarea {
       font-size: 1em;
       padding: 15px 10px 10px;
