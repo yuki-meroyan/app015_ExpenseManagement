@@ -307,7 +307,9 @@
     }
 
     &__selectbox{
-      
+      @include mq(xlarge) {
+        height: 40px;
+      }
     }
 
     &__button{
