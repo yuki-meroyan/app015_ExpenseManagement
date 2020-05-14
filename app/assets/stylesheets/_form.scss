@@ -8,7 +8,8 @@
   }
 
   &__content{
-    max-width:600px;
+    max-width:500px;
+    min-width:400px;
     margin:0 auto;
     text-align:center;
     -webkit-border-radius:6px;
@@ -40,7 +41,10 @@
     h2 {
       text-align:center;
       padding:18px 0 18px 0;
-      font-size: 1.4em;
+      @include mq(xlarge) {
+        font-size: 1.4em;
+      }
+      font-size: 1rem;
     }
   }
 
@@ -162,7 +166,9 @@
   }
 
   &__box{
-    margin: 20px 0 10px;
+    @include mq(xlarge) {
+      margin: 20px 0 10px;
+    }
     input, textarea {
       font-size: 1em;
       padding: 15px 10px 10px;
@@ -195,9 +201,13 @@
     display: inline-block;
     width: 300px;
     text-align: left;
-    margin: 10px 0;
     color: $list-font-color;
-    font-size: 1.5rem;
+    @include mq(xlarge) {
+      margin: 10px 0;
+      font-size: 1.5rem;
+    }
+    padding: 5px 0;
+    font-size: 1rem;
     font-weight: bold;
 
     &__box{
@@ -277,7 +287,7 @@
 
     &__textbox{
       font-size: 1em;
-      padding: 15px 10px 10px;
+      padding: 15px 10px;
       border: 1px solid $form-line-color;
       background: $form-back-color;
       color:$form-font-color;
@@ -297,7 +307,9 @@
     }
 
     &__selectbox{
-      height: 40px;
+      @include mq(xlarge) {
+        height: 40px;
+      }
     }
 
     &__button{

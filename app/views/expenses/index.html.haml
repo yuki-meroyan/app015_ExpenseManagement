@@ -29,7 +29,7 @@
             - else
               未分類
         %td
-          = expense.price
+          = "¥" + expense.price.to_s(:delimited)
         %td.table__content--link
           = link_to expense_path(expense, group_id: expense.group_id) do
             詳細

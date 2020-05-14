@@ -28,6 +28,10 @@
     td,th{
       padding:10px;
       color:$list-font-color;
+      @include mq(xlarge) {
+        font-size: 1rem;
+      }
+      font-size: 0.6rem;
     }
     th{
       color:#fff;
@@ -78,7 +82,7 @@
   .table{
     &__content {
       border: 0;
-      width:100%;
+      width:95%;
       font-size: 0.8rem;
     }
   }
