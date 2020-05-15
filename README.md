@@ -16,7 +16,7 @@
 + Ruby on Rails
 
 ## Platform
-+ Git(GitHub)
++ Heroku
 
 ## Detail
 <details><summary><strong>ManagementToRememberの概要</strong></summary>
