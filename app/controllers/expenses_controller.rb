@@ -9,7 +9,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = @group.expenses
+    @expenses = @group.expenses.order(order_date: "DESC")
   end
 
   def new

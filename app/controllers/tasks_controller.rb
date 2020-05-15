@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = @group.tasks
+    @tasks = @group.tasks.order(status: "ASC", delivery_date: "ASC")
   end
 
   def new
