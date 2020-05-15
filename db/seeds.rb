@@ -1,5 +1,5 @@
 100.times do |n|
-  nick_name = Faker::Games::Pokemon.name
+  nick_name = Faker::Name.name
   family_name = Faker::Name.middle_name
   first_name = Faker::Name.first_name
   email = "Faker_#{n}@gmail.com"
